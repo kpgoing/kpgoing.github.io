@@ -42,7 +42,7 @@
 		
 		
 			<span class="article__tags">
-			  	<a class="article__tag-link" href="/tags/Hexo-github-博客/">Hexo github 博客</a>
+			  	<a class="article__tag-link" href="/tags/Hexo-github-博客/">-Hexo -github -博客</a>
 			</span>
 		
 	</div>
@@ -56,16 +56,16 @@
 <p>同时因为npm是基于node.js的，在安装npm的过程中，如果brew发现本地没有node.js，会自动进行node.js的安装.</p>
 <h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm install -g hexo-cli</div></pre></td></tr></table></figure>
 <h3 id="创建博客文件夹"><a href="#创建博客文件夹" class="headerlink" title="创建博客文件夹"></a>创建博客文件夹</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> hexo init &lt;blogname&gt;</div><div class="line"><span class="meta">$</span> cd &lt;blogname&gt;</div><div class="line"><span class="meta">$</span> npm install</div></pre></td></tr></table></figure>
-<p>其中<blogname>指带的是你的博客源码的文件夹名，自己随意定义。</blogname></p>
+<p>其中\<blogname>指带的是你的博客源码的文件夹名，自己随意定义。</blogname></p>
 <p>###与github进行deploy绑定</p>
 <p>####在github上创建博客仓库</p>
-<p>仓库名称符合<username>.github.io, 其中<username>为你的github用户名。</username></username></p>
+<p>仓库名称符合\<username>.github.io, 其中\<username>为你的github用户名。</username></username></p>
 <p>####更改本地_config.yml文件配置</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"> type: git</div><div class="line"> repo: https://github.com/kpgoing/&lt;blog_repository_name&gt;.git</div><div class="line"> branch: master</div></pre></td></tr></table></figure>
-<p>其中<blog_repository_name>使用自己的博客仓库名。</blog_repository_name></p>
-<h3 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h3><p>在<blogname>目录下，运行：</blogname></p>
+<p>其中\<blog_repository_name>使用自己的博客仓库名。</blog_repository_name></p>
+<h3 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h3><p>在\<blogname>目录下，运行：</blogname></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> hexo clean</div><div class="line"><span class="meta">$</span> hexo g</div><div class="line"><span class="meta">$</span> hexo d</div></pre></td></tr></table></figure>
-<p>则可在<blog_repository_name>查看初始blog.</blog_repository_name></p>
+<p>则可在\<blog_repository_name>查看初始blog.</blog_repository_name></p>
 <h2 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h2><h3 id="基础安装"><a href="#基础安装" class="headerlink" title="基础安装"></a>基础安装</h3><p>我这里使用的<strong>melidu</strong>,功能较少，但是看起来还行。</p>
 <p>在博客根目录，运行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git clone https://github.com/HoverBaum/meilidu-hexo.git themes/meilidu</div></pre></td></tr></table></figure>
