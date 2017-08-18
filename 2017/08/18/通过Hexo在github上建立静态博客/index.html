@@ -53,11 +53,8 @@
 <h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm install -g hexo-cli</div></pre></td></tr></table></figure>
 <h3 id="创建博客文件夹"><a href="#创建博客文件夹" class="headerlink" title="创建博客文件夹"></a>创建博客文件夹</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> hexo init &lt;blogname&gt;</div><div class="line"><span class="meta">$</span> cd &lt;blogname&gt;</div><div class="line"><span class="meta">$</span> npm install</div></pre></td></tr></table></figure>
 <p>其中<code>&lt;blogname&gt;</code>指带的是你的博客源码的文件夹名，自己随意定义。</p>
-<p>###与github进行deploy绑定</p>
-<p>####在github上创建博客仓库</p>
-<p>仓库名称符合<code>&lt;username&gt;</code>.github.io, 其中<code>&lt;username&gt;</code>为你的github用户名。</p>
-<p>####更改本地_config.yml文件配置</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"> type: git</div><div class="line"> repo: https://github.com/kpgoing/&lt;blog_repository_name&gt;.git</div><div class="line"> branch: master</div></pre></td></tr></table></figure>
+<h3 id="与github进行deploy绑定"><a href="#与github进行deploy绑定" class="headerlink" title="与github进行deploy绑定"></a>与github进行deploy绑定</h3><h4 id="在github上创建博客仓库"><a href="#在github上创建博客仓库" class="headerlink" title="在github上创建博客仓库"></a>在github上创建博客仓库</h4><p>仓库名称符合<code>&lt;username&gt;</code>.github.io, 其中<code>&lt;username&gt;</code>为你的github用户名。</p>
+<h4 id="更改本地-config-yml文件配置"><a href="#更改本地-config-yml文件配置" class="headerlink" title="更改本地_config.yml文件配置"></a>更改本地_config.yml文件配置</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"> type: git</div><div class="line"> repo: https://github.com/kpgoing/&lt;blog_repository_name&gt;.git</div><div class="line"> branch: master</div></pre></td></tr></table></figure>
 <p>其中<code>&lt;blog_repository_name&gt;</code>使用自己的博客仓库名。</p>
 <h3 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h3><p>在<code>&lt;blogname&gt;</code>目录下，运行：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> hexo clean</div><div class="line"><span class="meta">$</span> hexo g</div><div class="line"><span class="meta">$</span> hexo d</div></pre></td></tr></table></figure>
@@ -78,8 +75,7 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">title: About</div><div class="line">layout: page</div><div class="line">---</div><div class="line"></div><div class="line">自我介绍</div></pre></td></tr></table></figure>
 <h5 id="更改header图片"><a href="#更改header图片" class="headerlink" title="更改header图片"></a>更改header图片</h5><p>将下列路径中的图片进行替换即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meilidu/source/img/header.jpg</div></pre></td></tr></table></figure>
-<p>##其它</p>
-<p>可以通过模板创建post</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>可以通过模板创建post</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span>hexo new post "article"</div></pre></td></tr></table></figure>
 <p>这样可以在md中附加<strong>date</strong>和<strong>tag</strong>。</p>
 

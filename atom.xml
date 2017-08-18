@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-18T15:08:10.000Z</updated>
+  <updated>2017-08-18T15:10:30.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/08/18/%E9%80%9A%E8%BF%87Hexo%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8B%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2017/08/18/通过Hexo在github上建立静态博客/</id>
     <published>2017-08-18T10:10:50.000Z</published>
-    <updated>2017-08-18T15:08:10.000Z</updated>
+    <updated>2017-08-18T15:10:30.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="首先进行必要的准备"><a href="#首先进行必要的准备" class="headerlink" title="首先进行必要的准备"></a>首先进行必要的准备</h2><h3 id="下载npm和node-js"><a href="#下载npm和node-js" class="headerlink" title="下载npm和node.js"></a>下载npm和node.js</h3><p>npm是node.js的包管理工具，因为hexo是基于node.js的，所以会在构建安装中用到node.js和npm。</p>
 <p>因为是在macOS上进行配置，所以直接使用brew进行一键下载即可：</p>
@@ -29,11 +29,8 @@
 <h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm install -g hexo-cli</div></pre></td></tr></table></figure>
 <h3 id="创建博客文件夹"><a href="#创建博客文件夹" class="headerlink" title="创建博客文件夹"></a>创建博客文件夹</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> hexo init &lt;blogname&gt;</div><div class="line"><span class="meta">$</span> cd &lt;blogname&gt;</div><div class="line"><span class="meta">$</span> npm install</div></pre></td></tr></table></figure>
 <p>其中<code>&lt;blogname&gt;</code>指带的是你的博客源码的文件夹名，自己随意定义。</p>
-<p>###与github进行deploy绑定</p>
-<p>####在github上创建博客仓库</p>
-<p>仓库名称符合<code>&lt;username&gt;</code>.github.io, 其中<code>&lt;username&gt;</code>为你的github用户名。</p>
-<p>####更改本地_config.yml文件配置</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"> type: git</div><div class="line"> repo: https://github.com/kpgoing/&lt;blog_repository_name&gt;.git</div><div class="line"> branch: master</div></pre></td></tr></table></figure>
+<h3 id="与github进行deploy绑定"><a href="#与github进行deploy绑定" class="headerlink" title="与github进行deploy绑定"></a>与github进行deploy绑定</h3><h4 id="在github上创建博客仓库"><a href="#在github上创建博客仓库" class="headerlink" title="在github上创建博客仓库"></a>在github上创建博客仓库</h4><p>仓库名称符合<code>&lt;username&gt;</code>.github.io, 其中<code>&lt;username&gt;</code>为你的github用户名。</p>
+<h4 id="更改本地-config-yml文件配置"><a href="#更改本地-config-yml文件配置" class="headerlink" title="更改本地_config.yml文件配置"></a>更改本地_config.yml文件配置</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"> type: git</div><div class="line"> repo: https://github.com/kpgoing/&lt;blog_repository_name&gt;.git</div><div class="line"> branch: master</div></pre></td></tr></table></figure>
 <p>其中<code>&lt;blog_repository_name&gt;</code>使用自己的博客仓库名。</p>
 <h3 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h3><p>在<code>&lt;blogname&gt;</code>目录下，运行：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> hexo clean</div><div class="line"><span class="meta">$</span> hexo g</div><div class="line"><span class="meta">$</span> hexo d</div></pre></td></tr></table></figure>
@@ -54,8 +51,7 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">title: About</div><div class="line">layout: page</div><div class="line">---</div><div class="line"></div><div class="line">自我介绍</div></pre></td></tr></table></figure>
 <h5 id="更改header图片"><a href="#更改header图片" class="headerlink" title="更改header图片"></a>更改header图片</h5><p>将下列路径中的图片进行替换即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meilidu/source/img/header.jpg</div></pre></td></tr></table></figure>
-<p>##其它</p>
-<p>可以通过模板创建post</p>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>可以通过模板创建post</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span>hexo new post "article"</div></pre></td></tr></table></figure>
 <p>这样可以在md中附加<strong>date</strong>和<strong>tag</strong>。</p>
 ]]></content>
