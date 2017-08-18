@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-18T10:16:50.000Z</updated>
+  <updated>2017-08-18T10:17:48.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/08/18/%E9%80%9A%E8%BF%87Hexo%E5%9C%A8github%E4%B8%8A%E5%BB%BA%E7%AB%8B%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2017/08/18/通过Hexo在github上建立静态博客/</id>
     <published>2017-08-18T10:10:50.000Z</published>
-    <updated>2017-08-18T10:16:50.000Z</updated>
+    <updated>2017-08-18T10:17:48.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="首先进行必要的准备"><a href="#首先进行必要的准备" class="headerlink" title="首先进行必要的准备"></a>首先进行必要的准备</h2><h3 id="下载npm和node-js"><a href="#下载npm和node-js" class="headerlink" title="下载npm和node.js"></a>下载npm和node.js</h3><p>npm是node.js的包管理工具，因为hexo是基于node.js的，所以会在构建安装中用到node.js和npm。</p>
 <p>因为是在macOS上进行配置，所以直接使用brew进行一键下载即可：</p>
@@ -67,7 +67,7 @@
     </summary>
     
     
-      <category term="hexo github 博客" scheme="http://yoursite.com/tags/hexo-github-%E5%8D%9A%E5%AE%A2/"/>
+      <category term="hexo,github,博客" scheme="http://yoursite.com/tags/hexo-github-%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
