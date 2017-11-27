@@ -46,9 +46,8 @@
 	
 
 	
-		<p>###背景</p>
-<p>在做<strong>S10</strong>的时候，发现<code>.*</code>在进行正则匹配的时候是匹配的任意字符串，一开始可能思维出现了混乱认为其只能match像”<strong>aaaa</strong>“这样的连续相同字符，后来就想那如果确实想要匹配像”<strong>aaaa</strong>“这样的字符串，那要怎么办呢？</p>
-<h3 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h3><p>如何使用正则匹配像”<strong>aaa</strong>“,”<strong>bbbbb</strong>“这样的字符串。</p>
+		<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>在做<strong>S10</strong>的时候，发现<code>.*</code>在进行正则匹配的时候是匹配的任意字符串，一开始可能思维出现了混乱认为其只能match像<strong>“aaaa”</strong>这样的连续相同字符，后来就想那如果确实想要匹配像”<strong>aaaa</strong>“这样的字符串，那要怎么办呢？</p>
+<h3 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h3><p>如何使用正则匹配像<strong>“aaa”</strong>,<strong>“bbbbb”</strong>这样的字符串。</p>
 <h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>想了想，可以通过捕获第一个字符，然后结合反向引用就可做到。</p>
 <p>例子：</p>
 <ol>
