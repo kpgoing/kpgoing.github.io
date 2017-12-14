@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="theme-color" content="#33474d">
-	<title>zhisheng|😉</title>
+	<title>简单聊聊Spring中几种设计模式 | zhisheng|😉</title>
 	<link rel="stylesheet" href="/css/style.css" />
 	
       <link rel="alternate" href="/atom.xml" title="zhisheng|😉" type="application/atom+xml">
@@ -29,13 +29,9 @@
 	</header>
 
 	<main>
-		
-
-
-
-	<article>
+		<article>
 	
-		<h1><a href="/2017/12/14/简单聊聊Spring中几种设计模式/">简单聊聊Spring中几种设计模式</a></h1>
+		<h1>简单聊聊Spring中几种设计模式</h1>
 	
 	<div class="article__infos">
 		<span class="article__date">2017-12-14</span><br />
@@ -112,139 +108,11 @@
 	
 
 	
-
-</article>
-
-
-
-
-	<article>
-	
-		<h1><a href="/2017/11/27/关于连续相同任意字符的正则匹配问题/">关于连续相同任意字符的正则匹配问题</a></h1>
-	
-	<div class="article__infos">
-		<span class="article__date">2017-11-27</span><br />
-		
-		
-			<span class="article__tags">
-			  	<a class="article__tag-link" href="/tags/Leetcode/">Leetcode</a> <a class="article__tag-link" href="/tags/正则表达式/">正则表达式</a>
-			</span>
-		
-	</div>
-
-	
-
-	
-		<p>在做<strong>S10</strong>的时候，发现<code>.*</code>在进行正则匹配的时候是匹配的任意字符串，一开始可能思维出现了混乱认为其只能match像<strong>“aaaa”</strong>这样的连续相同字符，后来就想那如果确实想要匹配像”<strong>aaaa</strong>“这样的字符串，那要怎么办呢？</p>
-<h3 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h3><p>如何使用正则匹配像<strong>“aaa”</strong>,<strong>“bbbbb”</strong>这样的字符串。</p>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>想了想，可以通过捕获第一个字符，然后结合反向引用就可做到。</p>
-<p>例子：</p>
-<ol>
-<li><code>(?&lt;char&gt;.)\k&lt;char&gt;*</code>   使用命名捕获组 </li>
-</ol>
-<ol>
-<li><code>(.)\1*</code>  使用普通捕获组</li>
-</ol>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="http://blog.csdn.net/lxcnn/article/details/4146148" target="_blank" rel="external">正则基础之——捕获组（capture group）</a></p>
-
-	
+		<span class="different-posts"><a href="/2017/12/14/简单聊聊Spring中几种设计模式/" onclick="window.history.go(-1); return false;">⬅️ Go back </a></span>
 
 	
 
 </article>
-
-
-
-
-	<article>
-	
-		<h1><a href="/2017/08/18/通过Hexo在github上建立静态博客/">通过Hexo在github上建立静态博客</a></h1>
-	
-	<div class="article__infos">
-		<span class="article__date">2017-08-18</span><br />
-		
-		
-			<span class="article__tags">
-			  	<a class="article__tag-link" href="/tags/Hexo/">Hexo</a> <a class="article__tag-link" href="/tags/github/">github</a> <a class="article__tag-link" href="/tags/博客/">博客</a>
-			</span>
-		
-	</div>
-
-	
-
-	
-		<h2 id="首先进行必要的准备"><a href="#首先进行必要的准备" class="headerlink" title="首先进行必要的准备"></a>首先进行必要的准备</h2><h3 id="下载npm和node-js"><a href="#下载npm和node-js" class="headerlink" title="下载npm和node.js"></a>下载npm和node.js</h3><p>npm是node.js的包管理工具，因为hexo是基于node.js的，所以会在构建安装中用到node.js和npm。</p>
-<p>因为是在macOS上进行配置，所以直接使用brew进行一键下载即可：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> brew install npm</div></pre></td></tr></table></figure>
-<p>同时因为npm是基于node.js的，在安装npm的过程中，如果brew发现本地没有node.js，会自动进行node.js的安装.</p>
-<h3 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm install -g hexo-cli</div></pre></td></tr></table></figure>
-<h3 id="创建博客文件夹"><a href="#创建博客文件夹" class="headerlink" title="创建博客文件夹"></a>创建博客文件夹</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> hexo init &lt;blogname&gt;</div><div class="line"><span class="meta">$</span> cd &lt;blogname&gt;</div><div class="line"><span class="meta">$</span> npm install</div></pre></td></tr></table></figure>
-<p>其中<code>&lt;blogname&gt;</code>指带的是你的博客源码的文件夹名，自己随意定义。</p>
-<h3 id="与github进行deploy绑定"><a href="#与github进行deploy绑定" class="headerlink" title="与github进行deploy绑定"></a>与github进行deploy绑定</h3><h4 id="在github上创建博客仓库"><a href="#在github上创建博客仓库" class="headerlink" title="在github上创建博客仓库"></a>在github上创建博客仓库</h4><p>仓库名称符合<code>&lt;username&gt;</code>.github.io, 其中<code>&lt;username&gt;</code>为你的github用户名。</p>
-<h4 id="更改本地-config-yml文件配置"><a href="#更改本地-config-yml文件配置" class="headerlink" title="更改本地_config.yml文件配置"></a>更改本地_config.yml文件配置</h4><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line"> type: git</div><div class="line"> repo: https://github.com/kpgoing/&lt;blog_repository_name&gt;.git</div><div class="line"> branch: master</div></pre></td></tr></table></figure>
-<p>其中<code>&lt;blog_repository_name&gt;</code>使用自己的博客仓库名。</p>
-<h3 id="测试效果"><a href="#测试效果" class="headerlink" title="测试效果"></a>测试效果</h3><p>在<code>&lt;blogname&gt;</code>目录下，运行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> hexo clean</div><div class="line"><span class="meta">$</span> hexo g</div><div class="line"><span class="meta">$</span> hexo d</div></pre></td></tr></table></figure>
-<p>则可在<code>&lt;blog_repository_name&gt;</code>查看初始blog.</p>
-<h2 id="安装主题"><a href="#安装主题" class="headerlink" title="安装主题"></a>安装主题</h2><h3 id="基础安装"><a href="#基础安装" class="headerlink" title="基础安装"></a>基础安装</h3><p>我这里使用的<strong>melidu</strong>,功能较少，但是看起来还行。</p>
-<p>在博客根目录，运行</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> git clone https://github.com/HoverBaum/meilidu-hexo.git themes/meilidu</div></pre></td></tr></table></figure>
-<p>然后将<strong>config.yml</strong>配置进行更改:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">theme:</span> <span class="string">meilidu</span></div></pre></td></tr></table></figure>
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h5 id="启用RSS"><a href="#启用RSS" class="headerlink" title="启用RSS"></a>启用RSS</h5><p>在博客根目录执行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span> npm install hexo-generator-feed --save</div></pre></td></tr></table></figure>
-<p>安装RSS必要插件。</p>
-<h5 id="启用Tags-paga"><a href="#启用Tags-paga" class="headerlink" title="启用Tags paga"></a>启用Tags paga</h5><p>在<strong>source</strong>目录下创建<strong>tags</strong>，在该目录下创建<strong>index.md</strong></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: "Tags"</div><div class="line">layout: "tags"</div><div class="line">---</div></pre></td></tr></table></figure>
-<h5 id="启用Categories-page"><a href="#启用Categories-page" class="headerlink" title="启用Categories page"></a>启用Categories page</h5><p>在<strong>source</strong>目录下创建<strong>categories</strong>，在该目录下创建<strong>index.md</strong></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: "Categories"</div><div class="line">layout: "categories"</div><div class="line">---</div></pre></td></tr></table></figure>
-<h5 id="启用About-page"><a href="#启用About-page" class="headerlink" title="启用About page"></a>启用About page</h5><p>在<strong>source</strong>目录下创建<strong>about</strong>，在该目录下创建<strong>index.md</strong></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">title: About</div><div class="line">layout: page</div><div class="line">---</div><div class="line"></div><div class="line">自我介绍</div></pre></td></tr></table></figure>
-<h5 id="更改header图片"><a href="#更改header图片" class="headerlink" title="更改header图片"></a>更改header图片</h5><p>将下列路径中的图片进行替换即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">meilidu/source/img/header.jpg</div></pre></td></tr></table></figure>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><p>可以通过模板创建post</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">$</span>hexo new post "article"</div></pre></td></tr></table></figure>
-<p>这样可以在md中附加<strong>date</strong>和<strong>tag</strong>。</p>
-
-	
-
-	
-
-</article>
-
-
-
-
-	<article>
-	
-		<h1><a href="/2017/08/18/准则/">准则</a></h1>
-	
-	<div class="article__infos">
-		<span class="article__date">2017-08-18</span><br />
-		
-		
-	</div>
-
-	
-
-	
-		<p>不做无意义的复制，不做无意义的收集</p>
-<p>所有的都会附加思考，附加思想</p>
-<p>做一个技术纯粹的人，在一个不纯粹的世界上</p>
-
-	
-
-	
-
-</article>
-
-
-
-
-
-
-	<span class="different-posts">📕 end of posts 📕</span>
-
 
 	</main>
 
