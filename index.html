@@ -35,18 +35,22 @@
 
 	<article>
 	
-		<h1><a href="/2019/09/25/「条件队列」探索/"></a></h1>
+		<h1><a href="/2019/11/18/「条件队列」探索/">「条件队列」探索</a></h1>
 	
 	<div class="article__infos">
-		<span class="article__date">2019-09-25</span><br />
+		<span class="article__date">2019-11-18</span><br />
 		
+		
+			<span class="article__tags">
+			  	<a class="article__tag-link" href="/tags/Java/">Java</a> <a class="article__tag-link" href="/tags/并发/">并发</a> <a class="article__tag-link" href="/tags/条件队列/">条件队列</a>
+			</span>
 		
 	</div>
 
 	
 
 	
-		<h1 id="「条件队列」探索"><a href="#「条件队列」探索" class="headerlink" title="「条件队列」探索"></a>「条件队列」探索</h1><h2 id="名称解释"><a href="#名称解释" class="headerlink" title="名称解释"></a>名称解释</h2><p>条件谓词：使某个操作成为状态依赖操作的前提条件。比如容器的<code>isFull</code>等判断。</p>
+		<h2 id="名称解释"><a href="#名称解释" class="headerlink" title="名称解释"></a>名称解释</h2><p>条件谓词：使某个操作成为状态依赖操作的前提条件。比如容器的<code>isFull</code>等判断。</p>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ol>
 <li><p>定义：一组线程能够通过某种方式等待特点条件变成真，“这组队列和对应的条件等待机制”可以组合称为「条件队列」（此处定义为我的理解，也可以说一个等待机制就是条件队列，因为线程和具体条件都是可变更的），这是一个稍微抽象的概念，传统的队列中的元素都是一个个数据，而条件队列中的元素是一个个正在等待相关条件的线程。</p>
 </li>
