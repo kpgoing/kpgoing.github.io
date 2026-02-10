@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html lang="zh-CN" __gchrome_remoteframetoken="0aa2da5c3c4c2d1811e9fc2acd78b05b"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tool2</title>
@@ -58,10 +57,10 @@
         }
     </style>
 </head>
-<body>
+<body data-__gcrweb-innertext-processed="2713D24E3F405F196873CB845FCA0918">
     <div id="content">
-        <!DOCTYPE html>
-<html lang="zh-CN"><head>
+        
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>账单转换工具</title>
@@ -782,7 +781,7 @@
                             {
                                 "type": "contains",
                                 "sourceColumn": "订单标题",
-                                "value": "糯米饭,龙虾,鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单,烧烤,火锅,串串"
+                                "value": "川渝竹苑,糯米饭,龙虾,鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单,烧烤,火锅,串串"
                             }
                         ],
                         "targetValue": "宵夜"
@@ -993,8 +992,8 @@
     </script>
     <!-- PRESET_CONFIG_END -->
 <link rel="stylesheet" href="/index.css">
-</head>
-<body>
+
+
     <div class="container" id="main-container">
         <header>
             <h1>📊 账单转换工具</h1>
@@ -1011,9 +1010,7 @@
             </div>
             <div class="config-actions">
                 <div style="display: flex; gap: 8px; flex: 1;">
-                    <select id="presetSelect" class="preset-select" onchange="onPresetSelectChange()">
-                        <option value="">-- 选择配置方案 --</option>
-                    </select>
+                    <select id="presetSelect" class="preset-select" onchange="onPresetSelectChange()" __gchrome_uniqueid="1"><option value="">-- 选择配置方案 --</option><option value="meituan-pixiu">美团账单 → 貔貅记账</option></select>
                     <button class="btn btn-primary" onclick="applySelectedPreset()" title="应用选中的配置方案">✓ 应用</button>
                 </div>
                 <div style="display: flex; gap: 8px;">
@@ -1037,20 +1034,20 @@
                     </div>
                 </div>
 
-                <div class="upload-zone hidden" id="uploadZone">
+                <div class="upload-zone hidden" id="uploadZone" style="display: none;">
                     <div class="upload-icon">📄</div>
                     <p>点击选择或拖拽 CSV 文件</p>
                     <p class="hint">支持 .csv 格式文件</p>
                 </div>
                 <!-- Separate button for mobile easier clicking if drag drop fails visually -->
-                <button class="btn btn-primary btn-lg" id="mobileUploadBtn" style="display:none; width: 100%; margin-bottom: 16px;" onclick="document.getElementById('fileInput').click()">📄 选择 CSV 文件</button>
+                <button class="btn btn-primary btn-lg" id="mobileUploadBtn" style="display: none; width: 100%; margin-bottom: 16px;" onclick="document.getElementById('fileInput').click()">📄 选择 CSV 文件</button>
                 <input type="file" id="fileInput" accept=".csv">
 
-                <div id="fileInfo" class="file-info hidden">
+                <div id="fileInfo" class="file-info" style="display: flex;">
                     <span class="file-icon">📄</span>
                     <div class="file-details">
-                        <div class="file-name" id="fileName"></div>
-                        <div class="file-size" id="fileSize"></div>
+                        <div class="file-name" id="fileName">美团账单(20260104-20260208).csv</div>
+                        <div class="file-size" id="fileSize">21.0 KB</div>
                     </div>
                     <button class="btn btn-secondary btn-sm" onclick="clearFile()">清除</button>
                 </div>
@@ -1059,13 +1056,13 @@
                     <div class="form-group">
                         <label>跳过行数（表头前）</label>
                         <div style="display: flex; gap: 8px;">
-                            <input type="number" id="skipRows" value="0" min="0" onchange="parseSourceData()" style="flex: 1;">
+                            <input type="number" id="skipRows" value="0" min="0" onchange="parseSourceData()" style="flex: 1;" __gchrome_uniqueid="2">
                             <button class="btn btn-secondary" onclick="autoDetectHeader()" title="自动检测表头行">🔍 自动</button>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>文件编码</label>
-                        <select id="fileEncoding" onchange="parseSourceData()">
+                        <select id="fileEncoding" onchange="parseSourceData()" __gchrome_uniqueid="3">
                             <option value="UTF-8">UTF-8</option>
                             <option value="GBK">GBK</option>
                             <option value="GB2312">GB2312</option>
@@ -1075,17 +1072,12 @@
 
                 <div class="form-group">
                     <label>源数据预览</label>
-                    <div class="table-container" id="sourcePreview">
-                        <div class="empty-state" style="padding: 24px; text-align: center; color: var(--text-muted);">
-                            <div class="empty-icon" style="font-size: 32px; margin-bottom: 8px;">📊</div>
-                            <p>请上传 CSV 文件查看数据</p>
-                        </div>
-                    </div>
+                    <div class="table-container" id="sourcePreview"><table><thead><tr><th>交易创建时间</th><th>交易成功时间</th><th>交易类型</th><th>订单标题</th><th>收/支</th><th>支付方式</th><th>订单金额</th><th>实付金额</th><th>交易单号</th><th>商家单号</th><th>备注</th></tr></thead><tbody></tbody></table><div class="scroll-hint">上传数据后显示预览</div></div>
                 </div>
 
                 <div class="status-bar" id="sourceStatus">
-                    <span class="status-text">等待上传文件...</span>
-                </div>
+                <span class="status-text">请上传数据文件</span>
+            </div>
             </div>
 
             <!-- 右侧：输出配置 -->
@@ -1101,23 +1093,65 @@
                 <div class="form-group">
                     <label>目标列配置</label>
                     <div class="column-list" id="targetColumns">
-                        <!-- Columns generated by JS -->
+                    <div class="column-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <input type="text" value="交易日期" onchange="updateColumnName(0, this.value)" placeholder="列名" __gchrome_uniqueid="314">
+                        <input type="text" value="" onchange="updateColumnDefault(0, this.value)" placeholder="默认值" style="max-width: 120px;" __gchrome_uniqueid="315">
+                        <button class="btn btn-danger btn-sm" onclick="removeColumn(0)">删除</button>
                     </div>
+                
+                    <div class="column-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <input type="text" value="收支类型" onchange="updateColumnName(1, this.value)" placeholder="列名" __gchrome_uniqueid="316">
+                        <input type="text" value="" onchange="updateColumnDefault(1, this.value)" placeholder="默认值" style="max-width: 120px;" __gchrome_uniqueid="317">
+                        <button class="btn btn-danger btn-sm" onclick="removeColumn(1)">删除</button>
+                    </div>
+                
+                    <div class="column-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <input type="text" value="收支项目" onchange="updateColumnName(2, this.value)" placeholder="列名" __gchrome_uniqueid="318">
+                        <input type="text" value="" onchange="updateColumnDefault(2, this.value)" placeholder="默认值" style="max-width: 120px;" __gchrome_uniqueid="319">
+                        <button class="btn btn-danger btn-sm" onclick="removeColumn(2)">删除</button>
+                    </div>
+                
+                    <div class="column-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <input type="text" value="金额" onchange="updateColumnName(3, this.value)" placeholder="列名" __gchrome_uniqueid="320">
+                        <input type="text" value="" onchange="updateColumnDefault(3, this.value)" placeholder="默认值" style="max-width: 120px;" __gchrome_uniqueid="321">
+                        <button class="btn btn-danger btn-sm" onclick="removeColumn(3)">删除</button>
+                    </div>
+                
+                    <div class="column-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <input type="text" value="账户名称" onchange="updateColumnName(4, this.value)" placeholder="列名" __gchrome_uniqueid="322">
+                        <input type="text" value="" onchange="updateColumnDefault(4, this.value)" placeholder="默认值" style="max-width: 120px;" __gchrome_uniqueid="323">
+                        <button class="btn btn-danger btn-sm" onclick="removeColumn(4)">删除</button>
+                    </div>
+                
+                    <div class="column-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <input type="text" value="标签" onchange="updateColumnName(5, this.value)" placeholder="列名" __gchrome_uniqueid="324">
+                        <input type="text" value="" onchange="updateColumnDefault(5, this.value)" placeholder="默认值" style="max-width: 120px;" __gchrome_uniqueid="325">
+                        <button class="btn btn-danger btn-sm" onclick="removeColumn(5)">删除</button>
+                    </div>
+                
+                    <div class="column-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <input type="text" value="备注" onchange="updateColumnName(6, this.value)" placeholder="列名" __gchrome_uniqueid="326">
+                        <input type="text" value="" onchange="updateColumnDefault(6, this.value)" placeholder="默认值" style="max-width: 120px;" __gchrome_uniqueid="327">
+                        <button class="btn btn-danger btn-sm" onclick="removeColumn(6)">删除</button>
+                    </div>
+                </div>
                 </div>
 
                 <div class="form-group" style="margin-top: 24px;">
                     <label>转换结果预览</label>
-                    <div class="table-container" id="resultPreview">
-                        <div class="empty-state" style="padding: 24px; text-align: center; color: var(--text-muted);">
-                            <div class="empty-icon" style="font-size: 32px; margin-bottom: 8px;">🔄</div>
-                            <p>配置映射规则后查看结果</p>
-                        </div>
-                    </div>
+                    <div class="table-container" id="resultPreview"><table><thead><tr><th>交易日期</th><th>收支类型</th><th>收支项目</th><th>金额</th><th>账户名称</th><th>标签</th><th>备注</th></tr></thead><tbody></tbody></table><div class="scroll-hint">上传并转换数据后显示预览</div></div>
                 </div>
 
                 <div class="status-bar" id="resultStatus">
-                    <span class="status-text">等待转换...</span>
-                </div>
+                <span class="status-text">暂无数据</span>
+            </div>
             </div>
         </div>
 
@@ -1131,16 +1165,1186 @@
             </div>
 
             <div class="mapping-list" id="mappingList">
-                <div class="empty-state" style="padding: 24px; text-align: center; color: var(--text-muted);">
-                    <p>请先添加目标列</p>
+                    <div class="mapping-item">
+                        <div class="mapping-header">
+                            <span class="mapping-target">交易日期</span>
+                            <span class="tag tag-green">日期转换</span>
+                        </div>
+                        <div class="mapping-body">
+                            <div class="form-group">
+                                <label>转换类型</label>
+                                <select onchange="updateRuleType('交易日期', this.value)" __gchrome_uniqueid="454">
+                                    <option value="direct">直接映射</option>
+                                    <option value="date" selected="">日期格式转换</option>
+                                    <option value="amount">金额处理</option>
+                                    <option value="valueMap">值映射</option>
+                                    <option value="fuzzyMap">模糊匹配映射</option>
+                                    <option value="combinedCondition">组合条件映射</option>
+                                    <option value="fixed">固定值</option>
+                                    <option value="expression">自定义表达式</option>
+                                </select>
+                            </div>
+                            
+                        <div class="form-group">
+                            <label>源列</label>
+                            <select onchange="updateRuleSourceColumn('交易日期', this.value)" __gchrome_uniqueid="455">
+                                <option value="">-- 选择源列 --</option>
+                                <option value="交易创建时间">交易创建时间</option><option value="交易成功时间" selected="">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                            </select>
+                        </div>
+                    
+                        </div>
+                        
+                    <div class="mapping-extra">
+                        <div class="form-group">
+                            <label>日期格式（输出）</label>
+                            <select onchange="updateRuleDateFormat('交易日期', this.value)" __gchrome_uniqueid="456">
+                                <option value="YYYY-MM-DD" selected="">YYYY-MM-DD</option>
+                                <option value="YYYY/MM/DD">YYYY/MM/DD</option>
+                                <option value="MM-DD-YYYY">MM-DD-YYYY</option>
+                            </select>
+                        </div>
+                    </div>
+                
+                    </div>
+                
+                    <div class="mapping-item">
+                        <div class="mapping-header">
+                            <span class="mapping-target">收支类型</span>
+                            <span class="tag tag-blue">值映射</span>
+                        </div>
+                        <div class="mapping-body">
+                            <div class="form-group">
+                                <label>转换类型</label>
+                                <select onchange="updateRuleType('收支类型', this.value)" __gchrome_uniqueid="457">
+                                    <option value="direct">直接映射</option>
+                                    <option value="date">日期格式转换</option>
+                                    <option value="amount">金额处理</option>
+                                    <option value="valueMap" selected="">值映射</option>
+                                    <option value="fuzzyMap">模糊匹配映射</option>
+                                    <option value="combinedCondition">组合条件映射</option>
+                                    <option value="fixed">固定值</option>
+                                    <option value="expression">自定义表达式</option>
+                                </select>
+                            </div>
+                            
+                        <div class="form-group">
+                            <label>源列</label>
+                            <select onchange="updateRuleSourceColumn('收支类型', this.value)" __gchrome_uniqueid="458">
+                                <option value="">-- 选择源列 --</option>
+                                <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题">订单标题</option><option value="收/支" selected="">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                            </select>
+                        </div>
+                    
+                        </div>
+                        
+                    <div class="mapping-extra">
+                        <label>值映射规则（精确匹配）</label>
+                        <div class="value-mapping-list">
+                            
+                        </div>
+                        <button class="btn btn-secondary btn-sm" style="margin-top: 8px;" onclick="addValueMapping('收支类型')">+ 添加映射</button>
+                    </div>
+                
+                    </div>
+                
+                    <div class="mapping-item">
+                        <div class="mapping-header">
+                            <span class="mapping-target">收支项目</span>
+                            <span class="tag tag-purple">组合条件</span>
+                        </div>
+                        <div class="mapping-body">
+                            <div class="form-group">
+                                <label>转换类型</label>
+                                <select onchange="updateRuleType('收支项目', this.value)" __gchrome_uniqueid="459">
+                                    <option value="direct">直接映射</option>
+                                    <option value="date">日期格式转换</option>
+                                    <option value="amount">金额处理</option>
+                                    <option value="valueMap">值映射</option>
+                                    <option value="fuzzyMap">模糊匹配映射</option>
+                                    <option value="combinedCondition" selected="">组合条件映射</option>
+                                    <option value="fixed">固定值</option>
+                                    <option value="expression">自定义表达式</option>
+                                </select>
+                            </div>
+                            
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label>默认值（无规则匹配时）</label>
+                            <input type="text" value="" onchange="updateCombinedDefault('收支项目', this.value)" placeholder="未匹配任何规则时的值" __gchrome_uniqueid="460">
+                        </div>
+                    
+                        </div>
+                        
+                    <div class="mapping-extra">
+                        <label>组合条件规则（按顺序匹配，满足所有条件时映射）</label>
+                        <div class="combined-rule-list">
+                            
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 1</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 0)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 0, 0, this.value)" __gchrome_uniqueid="461">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 0, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="462">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="打车,快车,曹操,滴滴" onchange="updateCombinedConditionField('收支项目', 0, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="463">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 0, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 0)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="打车" onchange="updateCombinedTargetValue('收支项目', 0, this.value)" placeholder="映射值" __gchrome_uniqueid="464">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 2</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 1)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 1, 0, this.value)" __gchrome_uniqueid="465">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 1, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="466">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="骑行,单车" onchange="updateCombinedConditionField('收支项目', 1, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="467">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 1, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 1)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="自行车" onchange="updateCombinedTargetValue('收支项目', 1, this.value)" placeholder="映射值" __gchrome_uniqueid="468">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 3</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 2)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 2, 0, this.value)" __gchrome_uniqueid="469">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 2, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="470">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="地铁" onchange="updateCombinedConditionField('收支项目', 2, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="471">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 2, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 2)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="地铁" onchange="updateCombinedTargetValue('收支项目', 2, this.value)" placeholder="映射值" __gchrome_uniqueid="472">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 4</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 3)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 3, 0, this.value)" __gchrome_uniqueid="473">
+                                <option value="timeRange" selected="">时间范围</option>
+                                <option value="contains">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 3, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="474">
+                            <option value="">选择时间列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间" selected="">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="time" value="06:00" onchange="updateCombinedConditionField('收支项目', 3, 0, 'startTime', this.value)" style="width: 100px;">
+                        <span style="color: var(--text-muted);">至</span>
+                        <input type="time" value="10:00" onchange="updateCombinedConditionField('收支项目', 3, 0, 'endTime', this.value)" style="width: 100px;">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 3, 0)">×</button>
+                        </div>
+                    
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 3, 1, this.value)" __gchrome_uniqueid="475">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 3, 1, 'sourceColumn', this.value)" __gchrome_uniqueid="476">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单" onchange="updateCombinedConditionField('收支项目', 3, 1, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="477">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 3, 1)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 3)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="早餐" onchange="updateCombinedTargetValue('收支项目', 3, this.value)" placeholder="映射值" __gchrome_uniqueid="478">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 5</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 4)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 4, 0, this.value)" __gchrome_uniqueid="479">
+                                <option value="timeRange" selected="">时间范围</option>
+                                <option value="contains">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 4, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="480">
+                            <option value="">选择时间列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间" selected="">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="time" value="10:30" onchange="updateCombinedConditionField('收支项目', 4, 0, 'startTime', this.value)" style="width: 100px;">
+                        <span style="color: var(--text-muted);">至</span>
+                        <input type="time" value="15:00" onchange="updateCombinedConditionField('收支项目', 4, 0, 'endTime', this.value)" style="width: 100px;">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 4, 0)">×</button>
+                        </div>
+                    
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 4, 1, this.value)" __gchrome_uniqueid="481">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 4, 1, 'sourceColumn', this.value)" __gchrome_uniqueid="482">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="糯米饭,龙虾,鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单" onchange="updateCombinedConditionField('收支项目', 4, 1, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="483">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 4, 1)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 4)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="午餐" onchange="updateCombinedTargetValue('收支项目', 4, this.value)" placeholder="映射值" __gchrome_uniqueid="484">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 6</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 5)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 5, 0, this.value)" __gchrome_uniqueid="485">
+                                <option value="timeRange" selected="">时间范围</option>
+                                <option value="contains">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 5, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="486">
+                            <option value="">选择时间列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间" selected="">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="time" value="15:00" onchange="updateCombinedConditionField('收支项目', 5, 0, 'startTime', this.value)" style="width: 100px;">
+                        <span style="color: var(--text-muted);">至</span>
+                        <input type="time" value="21:00" onchange="updateCombinedConditionField('收支项目', 5, 0, 'endTime', this.value)" style="width: 100px;">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 5, 0)">×</button>
+                        </div>
+                    
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 5, 1, this.value)" __gchrome_uniqueid="487">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 5, 1, 'sourceColumn', this.value)" __gchrome_uniqueid="488">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="糯米饭,龙虾,鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单,烧烤,火锅,串串" onchange="updateCombinedConditionField('收支项目', 5, 1, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="489">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 5, 1)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 5)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="晚餐" onchange="updateCombinedTargetValue('收支项目', 5, this.value)" placeholder="映射值" __gchrome_uniqueid="490">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 7</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 6)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 6, 0, this.value)" __gchrome_uniqueid="491">
+                                <option value="timeRange" selected="">时间范围</option>
+                                <option value="contains">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 6, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="492">
+                            <option value="">选择时间列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间" selected="">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="time" value="21:00" onchange="updateCombinedConditionField('收支项目', 6, 0, 'startTime', this.value)" style="width: 100px;">
+                        <span style="color: var(--text-muted);">至</span>
+                        <input type="time" value="23:59" onchange="updateCombinedConditionField('收支项目', 6, 0, 'endTime', this.value)" style="width: 100px;">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 6, 0)">×</button>
+                        </div>
+                    
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 6, 1, this.value)" __gchrome_uniqueid="493">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 6, 1, 'sourceColumn', this.value)" __gchrome_uniqueid="494">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="糯米饭,龙虾,鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单,烧烤,火锅,串串" onchange="updateCombinedConditionField('收支项目', 6, 1, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="495">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 6, 1)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 6)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="宵夜" onchange="updateCombinedTargetValue('收支项目', 6, this.value)" placeholder="映射值" __gchrome_uniqueid="496">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 8</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 7)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 7, 0, this.value)" __gchrome_uniqueid="497">
+                                <option value="timeRange" selected="">时间范围</option>
+                                <option value="contains">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 7, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="498">
+                            <option value="">选择时间列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间" selected="">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="time" value="00:00" onchange="updateCombinedConditionField('收支项目', 7, 0, 'startTime', this.value)" style="width: 100px;">
+                        <span style="color: var(--text-muted);">至</span>
+                        <input type="time" value="06:00" onchange="updateCombinedConditionField('收支项目', 7, 0, 'endTime', this.value)" style="width: 100px;">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 7, 0)">×</button>
+                        </div>
+                    
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 7, 1, this.value)" __gchrome_uniqueid="499">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 7, 1, 'sourceColumn', this.value)" __gchrome_uniqueid="500">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="糯米饭,龙虾,鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单,烧烤,火锅,串串" onchange="updateCombinedConditionField('收支项目', 7, 1, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="501">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 7, 1)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 7)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="宵夜" onchange="updateCombinedTargetValue('收支项目', 7, this.value)" placeholder="映射值" __gchrome_uniqueid="502">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 9</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 8)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 8, 0, this.value)" __gchrome_uniqueid="503">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 8, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="504">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="咖啡,瑞幸,Luckin,星巴克,Manner" onchange="updateCombinedConditionField('收支项目', 8, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="505">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 8, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 8)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="咖啡" onchange="updateCombinedTargetValue('收支项目', 8, this.value)" placeholder="映射值" __gchrome_uniqueid="506">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 10</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 9)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 9, 0, this.value)" __gchrome_uniqueid="507">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 9, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="508">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="奶茶,茶饮,喜茶,蜜雪,古茗,茶百道,书亦,一点点,COCO,乐乐茶,LELECHA,茶坊苦抹,奈雪的茶,爷爷不泡茶" onchange="updateCombinedConditionField('收支项目', 9, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="509">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 9, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 9)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="奶茶" onchange="updateCombinedTargetValue('收支项目', 9, this.value)" placeholder="映射值" __gchrome_uniqueid="510">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 11</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 10)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 10, 0, this.value)" __gchrome_uniqueid="511">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 10, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="512">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="小象超市,美团买菜,菜,超市,便利店" onchange="updateCombinedConditionField('收支项目', 10, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="513">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 10, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 10)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="其他杂项" onchange="updateCombinedTargetValue('收支项目', 10, this.value)" placeholder="映射值" __gchrome_uniqueid="514">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 12</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 11)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 11, 0, this.value)" __gchrome_uniqueid="515">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 11, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="516">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="药房,药店,医院,诊所,海王星辰,叮当快药" onchange="updateCombinedConditionField('收支项目', 11, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="517">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 11, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 11)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="中西药" onchange="updateCombinedTargetValue('收支项目', 11, this.value)" placeholder="映射值" __gchrome_uniqueid="518">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 13</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 12)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 12, 0, this.value)" __gchrome_uniqueid="519">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 12, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="520">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="电影" onchange="updateCombinedConditionField('收支项目', 12, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="521">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 12, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 12)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="电影" onchange="updateCombinedTargetValue('收支项目', 12, this.value)" placeholder="映射值" __gchrome_uniqueid="522">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 14</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 13)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 13, 0, this.value)" __gchrome_uniqueid="523">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 13, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="524">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="KTV" onchange="updateCombinedConditionField('收支项目', 13, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="525">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 13, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 13)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="KTV唱歌" onchange="updateCombinedTargetValue('收支项目', 13, this.value)" placeholder="映射值" __gchrome_uniqueid="526">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 15</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 14)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 14, 0, this.value)" __gchrome_uniqueid="527">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 14, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="528">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="游戏" onchange="updateCombinedConditionField('收支项目', 14, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="529">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 14, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 14)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="游戏" onchange="updateCombinedTargetValue('收支项目', 14, this.value)" placeholder="映射值" __gchrome_uniqueid="530">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 16</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 15)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 15, 0, this.value)" __gchrome_uniqueid="531">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 15, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="532">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="网吧,电竞" onchange="updateCombinedConditionField('收支项目', 15, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="533">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 15, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 15)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="网吧" onchange="updateCombinedTargetValue('收支项目', 15, this.value)" placeholder="映射值" __gchrome_uniqueid="534">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 17</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 16)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 16, 0, this.value)" __gchrome_uniqueid="535">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 16, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="536">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="足道" onchange="updateCombinedConditionField('收支项目', 16, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="537">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 16, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 16)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="推拿足按" onchange="updateCombinedTargetValue('收支项目', 16, this.value)" placeholder="映射值" __gchrome_uniqueid="538">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 18</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 17)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 17, 0, this.value)" __gchrome_uniqueid="539">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 17, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="540">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="充电" onchange="updateCombinedConditionField('收支项目', 17, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="541">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 17, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 17)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="充电宝" onchange="updateCombinedTargetValue('收支项目', 17, this.value)" placeholder="映射值" __gchrome_uniqueid="542">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 19</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 18)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 18, 0, this.value)" __gchrome_uniqueid="543">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 18, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="544">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="民营机构男性套餐" onchange="updateCombinedConditionField('收支项目', 18, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="545">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 18, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 18)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="体检" onchange="updateCombinedTargetValue('收支项目', 18, this.value)" placeholder="映射值" __gchrome_uniqueid="546">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 20</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 19)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 19, 0, this.value)" __gchrome_uniqueid="547">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 19, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="548">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="鲜花店,名创优品,Apple授权专营店" onchange="updateCombinedConditionField('收支项目', 19, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="549">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 19, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 19)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="礼物" onchange="updateCombinedTargetValue('收支项目', 19, this.value)" placeholder="映射值" __gchrome_uniqueid="550">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 21</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 20)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 20, 0, this.value)" __gchrome_uniqueid="551">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 20, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="552">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="甜品" onchange="updateCombinedConditionField('收支项目', 20, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="553">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 20, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 20)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="甜品" onchange="updateCombinedTargetValue('收支项目', 20, this.value)" placeholder="映射值" __gchrome_uniqueid="554">
+                            </div>
+                        </div>
+                    
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 22</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('收支项目', 21)">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('收支项目', 21, 0, this.value)" __gchrome_uniqueid="555">
+                                <option value="timeRange">时间范围</option>
+                                <option value="contains" selected="">包含任一(OR)</option>
+                                <option value="containsAll">包含全部(AND)</option>
+                                <option value="equals">精确匹配</option>
+                                <option value="startsWith">开头匹配</option>
+                                <option value="regex">正则匹配</option>
+                            </select>
+                            
+                        <select onchange="updateCombinedConditionField('收支项目', 21, 0, 'sourceColumn', this.value)" __gchrome_uniqueid="556">
+                            <option value="">选择列</option>
+                            <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                        </select>
+                        <input type="text" value="商城订单" onchange="updateCombinedConditionField('收支项目', 21, 0, 'value', this.value)" placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;" title="多关键词用逗号分隔，匹配任一即可（OR关系）" __gchrome_uniqueid="557">
+                    
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('收支项目', 21, 0)">×</button>
+                        </div>
+                    
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('收支项目', 21)">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="其他杂项" onchange="updateCombinedTargetValue('收支项目', 21, this.value)" placeholder="映射值" __gchrome_uniqueid="558">
+                            </div>
+                        </div>
+                    
+                        </div>
+                        <button class="btn btn-primary btn-sm" style="margin-top: 8px;" onclick="addCombinedRule('收支项目')">+ 添加组合规则</button>
+                    </div>
+                
+                    </div>
+                
+                    <div class="mapping-item">
+                        <div class="mapping-header">
+                            <span class="mapping-target">金额</span>
+                            <span class="tag tag-orange">金额处理</span>
+                        </div>
+                        <div class="mapping-body">
+                            <div class="form-group">
+                                <label>转换类型</label>
+                                <select onchange="updateRuleType('金额', this.value)" __gchrome_uniqueid="559">
+                                    <option value="direct">直接映射</option>
+                                    <option value="date">日期格式转换</option>
+                                    <option value="amount" selected="">金额处理</option>
+                                    <option value="valueMap">值映射</option>
+                                    <option value="fuzzyMap">模糊匹配映射</option>
+                                    <option value="combinedCondition">组合条件映射</option>
+                                    <option value="fixed">固定值</option>
+                                    <option value="expression">自定义表达式</option>
+                                </select>
+                            </div>
+                            
+                        <div class="form-group">
+                            <label>源列</label>
+                            <select onchange="updateRuleSourceColumn('金额', this.value)" __gchrome_uniqueid="560">
+                                <option value="">-- 选择源列 --</option>
+                                <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额" selected="">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                            </select>
+                        </div>
+                    
+                        </div>
+                        
+                    </div>
+                
+                    <div class="mapping-item">
+                        <div class="mapping-header">
+                            <span class="mapping-target">账户名称</span>
+                            <span class="tag tag-green">模糊匹配</span>
+                        </div>
+                        <div class="mapping-body">
+                            <div class="form-group">
+                                <label>转换类型</label>
+                                <select onchange="updateRuleType('账户名称', this.value)" __gchrome_uniqueid="561">
+                                    <option value="direct">直接映射</option>
+                                    <option value="date">日期格式转换</option>
+                                    <option value="amount">金额处理</option>
+                                    <option value="valueMap">值映射</option>
+                                    <option value="fuzzyMap" selected="">模糊匹配映射</option>
+                                    <option value="combinedCondition">组合条件映射</option>
+                                    <option value="fixed">固定值</option>
+                                    <option value="expression">自定义表达式</option>
+                                </select>
+                            </div>
+                            
+                        <div class="form-group">
+                            <label>源列</label>
+                            <select onchange="updateRuleSourceColumn('账户名称', this.value)" __gchrome_uniqueid="562">
+                                <option value="">-- 选择源列 --</option>
+                                <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题">订单标题</option><option value="收/支">收/支</option><option value="支付方式" selected="">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                            </select>
+                        </div>
+                    
+                        </div>
+                        
+                    <div class="mapping-extra">
+                        <label>模糊匹配规则（包含即匹配，按顺序优先）</label>
+                        <div class="fuzzy-mapping-list">
+                            
+                    <div class="fuzzy-mapping-item">
+                        <input type="text" value="微信" onchange="updateFuzzyMapping('账户名称', 0, 'contains', this.value)" placeholder="包含字符串" __gchrome_uniqueid="563">
+                        <span class="arrow-icon">→</span>
+                        <input type="text" value="微信零钱" onchange="updateFuzzyMapping('账户名称', 0, 'mapTo', this.value)" placeholder="映射值" __gchrome_uniqueid="564">
+                        <button class="btn btn-danger btn-sm" onclick="removeFuzzyMapping('账户名称', 0)">删除</button>
+                    </div>
+                
+                    <div class="fuzzy-mapping-item">
+                        <input type="text" value="招商银行" onchange="updateFuzzyMapping('账户名称', 1, 'contains', this.value)" placeholder="包含字符串" __gchrome_uniqueid="565">
+                        <span class="arrow-icon">→</span>
+                        <input type="text" value="招商信用卡" onchange="updateFuzzyMapping('账户名称', 1, 'mapTo', this.value)" placeholder="映射值" __gchrome_uniqueid="566">
+                        <button class="btn btn-danger btn-sm" onclick="removeFuzzyMapping('账户名称', 1)">删除</button>
+                    </div>
+                
+                    <div class="fuzzy-mapping-item">
+                        <input type="text" value="民生" onchange="updateFuzzyMapping('账户名称', 2, 'contains', this.value)" placeholder="包含字符串" __gchrome_uniqueid="567">
+                        <span class="arrow-icon">→</span>
+                        <input type="text" value="民生银行信用卡" onchange="updateFuzzyMapping('账户名称', 2, 'mapTo', this.value)" placeholder="映射值" __gchrome_uniqueid="568">
+                        <button class="btn btn-danger btn-sm" onclick="removeFuzzyMapping('账户名称', 2)">删除</button>
+                    </div>
+                
+                    <div class="fuzzy-mapping-item">
+                        <input type="text" value="支付宝" onchange="updateFuzzyMapping('账户名称', 3, 'contains', this.value)" placeholder="包含字符串" __gchrome_uniqueid="569">
+                        <span class="arrow-icon">→</span>
+                        <input type="text" value="支付宝余额" onchange="updateFuzzyMapping('账户名称', 3, 'mapTo', this.value)" placeholder="映射值" __gchrome_uniqueid="570">
+                        <button class="btn btn-danger btn-sm" onclick="removeFuzzyMapping('账户名称', 3)">删除</button>
+                    </div>
+                
+                    <div class="fuzzy-mapping-item">
+                        <input type="text" value="花呗" onchange="updateFuzzyMapping('账户名称', 4, 'contains', this.value)" placeholder="包含字符串" __gchrome_uniqueid="571">
+                        <span class="arrow-icon">→</span>
+                        <input type="text" value="花呗" onchange="updateFuzzyMapping('账户名称', 4, 'mapTo', this.value)" placeholder="映射值" __gchrome_uniqueid="572">
+                        <button class="btn btn-danger btn-sm" onclick="removeFuzzyMapping('账户名称', 4)">删除</button>
+                    </div>
+                
+                    <div class="fuzzy-mapping-item">
+                        <input type="text" value="白条" onchange="updateFuzzyMapping('账户名称', 5, 'contains', this.value)" placeholder="包含字符串" __gchrome_uniqueid="573">
+                        <span class="arrow-icon">→</span>
+                        <input type="text" value="白条" onchange="updateFuzzyMapping('账户名称', 5, 'mapTo', this.value)" placeholder="映射值" __gchrome_uniqueid="574">
+                        <button class="btn btn-danger btn-sm" onclick="removeFuzzyMapping('账户名称', 5)">删除</button>
+                    </div>
+                
+                        </div>
+                        <button class="btn btn-secondary btn-sm" style="margin-top: 8px;" onclick="addFuzzyMapping('账户名称')">+ 添加规则</button>
+                        <div class="form-group" style="margin-top: 12px;">
+                            <label>默认值（无匹配时）</label>
+                            <input type="text" value="" onchange="updateFuzzyDefault('账户名称', this.value)" placeholder="未匹配时的默认值" __gchrome_uniqueid="575">
+                        </div>
+                    </div>
+                
+                    </div>
+                
+                    <div class="mapping-item">
+                        <div class="mapping-header">
+                            <span class="mapping-target">标签</span>
+                            <span class="tag ">固定值</span>
+                        </div>
+                        <div class="mapping-body">
+                            <div class="form-group">
+                                <label>转换类型</label>
+                                <select onchange="updateRuleType('标签', this.value)" __gchrome_uniqueid="576">
+                                    <option value="direct">直接映射</option>
+                                    <option value="date">日期格式转换</option>
+                                    <option value="amount">金额处理</option>
+                                    <option value="valueMap">值映射</option>
+                                    <option value="fuzzyMap">模糊匹配映射</option>
+                                    <option value="combinedCondition">组合条件映射</option>
+                                    <option value="fixed" selected="">固定值</option>
+                                    <option value="expression">自定义表达式</option>
+                                </select>
+                            </div>
+                            
+                        <div class="form-group">
+                            <label>固定值</label>
+                            <input type="text" value="美团" onchange="updateRuleFixedValue('标签', this.value)" placeholder="输入固定值" __gchrome_uniqueid="577">
+                        </div>
+                    
+                        </div>
+                        
+                    </div>
+                
+                    <div class="mapping-item">
+                        <div class="mapping-header">
+                            <span class="mapping-target">备注</span>
+                            <span class="tag tag-blue">直接映射</span>
+                        </div>
+                        <div class="mapping-body">
+                            <div class="form-group">
+                                <label>转换类型</label>
+                                <select onchange="updateRuleType('备注', this.value)" __gchrome_uniqueid="578">
+                                    <option value="direct" selected="">直接映射</option>
+                                    <option value="date">日期格式转换</option>
+                                    <option value="amount">金额处理</option>
+                                    <option value="valueMap">值映射</option>
+                                    <option value="fuzzyMap">模糊匹配映射</option>
+                                    <option value="combinedCondition">组合条件映射</option>
+                                    <option value="fixed">固定值</option>
+                                    <option value="expression">自定义表达式</option>
+                                </select>
+                            </div>
+                            
+                        <div class="form-group">
+                            <label>源列</label>
+                            <select onchange="updateRuleSourceColumn('备注', this.value)" __gchrome_uniqueid="579">
+                                <option value="">-- 选择源列 --</option>
+                                <option value="交易创建时间">交易创建时间</option><option value="交易成功时间">交易成功时间</option><option value="交易类型">交易类型</option><option value="订单标题" selected="">订单标题</option><option value="收/支">收/支</option><option value="支付方式">支付方式</option><option value="订单金额">订单金额</option><option value="实付金额">实付金额</option><option value="交易单号">交易单号</option><option value="商家单号">商家单号</option><option value="备注">备注</option>
+                            </select>
+                        </div>
+                    
+                        </div>
+                        
+                    </div>
                 </div>
-            </div>
         </div>
         
         <!-- Sticky Action Bar -->
         <div class="action-bar">
             <div>
-                <span class="status-text" id="convertStatus"></span>
+                <span class="status-text" id="convertStatus">✅ 预览已更新</span>
             </div>
             <div class="btn-group">
                 <button class="btn btn-secondary" onclick="previewResult()">🔄 刷新预览</button>
@@ -1161,11 +2365,11 @@
             </div>
             <div class="form-group">
                 <label>列名</label>
-                <input type="text" id="newColumnName" placeholder="请输入列名">
+                <input type="text" id="newColumnName" placeholder="请输入列名" __gchrome_uniqueid="4">
             </div>
             <div class="form-group">
                 <label>默认值（可选）</label>
-                <input type="text" id="newColumnDefault" placeholder="留空则无默认值">
+                <input type="text" id="newColumnDefault" placeholder="留空则无默认值" __gchrome_uniqueid="5">
             </div>
             <div class="btn-group" style="margin-top: auto; width: 100%;">
                 <button class="btn btn-secondary" style="flex: 1;" onclick="closeColumnModal()">取消</button>
@@ -3042,7 +4246,7 @@
         init();
     </script>
 <script type="module" src="/index.tsx"></script>
-</body></html>
+
     </div>
     
     <!-- App 推广浮窗 -->
@@ -3127,32 +4331,4 @@
     }
   }
 </style>
-
-<!-- App 推广浮窗 -->
-<div id="app-promo">
-  <img src="http://pplane.anzhai.space/web_pan_icon.png" alt="App Icon">
-  <div id="app-promo-content">
-    <div id="app-promo-title">WebPan</div>
-    <div id="app-promo-desc">一款HTML代码编辑与预览工具</div>
-  </div>
-  <div id="app-promo-close">&times;</div>
-</div>
-
-<script>
-  // 点击关闭按钮
-  document.getElementById('app-promo-close').addEventListener('click', function(e) {
-    e.stopPropagation();  // 阻止事件冒泡
-    document.getElementById('app-promo').style.display = 'none';
-  });
-
-  // 点击浮窗跳转 App Store
-  document.getElementById('app-promo').addEventListener('click', function(e) {
-    if (e.target.id !== 'app-promo-close') {
-      window.open('https://apps.apple.com/app/id6749603694', '_blank');
-    }
-  });
-</script>
-
-
-</body>
-</html>
+</body></html>
