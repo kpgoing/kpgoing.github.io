@@ -1,0 +1,3158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tool2</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        blockquote {
+            border-left: 4px solid #ddd;
+            margin: 0;
+            padding-left: 15px;
+            color: #666;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <!DOCTYPE html>
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>账单转换工具</title>
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --bg-hover: #30363d;
+            --border-color: #30363d;
+            --border-focus: #58a6ff;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --text-muted: #6e7681;
+            --accent-blue: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-orange: #d29922;
+            --accent-red: #f85149;
+            --accent-purple: #a371f7;
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.4);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --transition: all 0.2s ease;
+            --safe-area-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: var(--safe-area-bottom);
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 24px 16px;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            transition: var(--transition);
+            min-width: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title .icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent-blue);
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+        }
+
+        .upload-zone {
+            border: 2px dashed var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 32px 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--bg-tertiary);
+        }
+
+        .upload-zone:active {
+            background: var(--bg-hover);
+        }
+
+        .upload-zone .upload-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.7;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+            align-items: flex-end;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Improved inputs for touch targets */
+        input[type="text"],
+        input[type="number"],
+        input[type="time"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 14px; /* Increased padding for touch */
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 16px; /* Prevent iOS zoom on focus */
+            transition: var(--transition);
+            appearance: none; /* Reset native appearance */
+        }
+
+        /* Custom arrow for selects */
+        select {
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b949e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 16px;
+            padding-right: 30px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px; /* Increased padding */
+            border: none;
+            border-radius: var(--radius-sm);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            min-height: 44px; /* Touch target size */
+            white-space: nowrap;
+        }
+
+        .btn-primary { background: var(--accent-blue); color: white; }
+        .btn-secondary { background: var(--bg-tertiary); color: var(--text-primary); border: 1px solid var(--border-color); }
+        .btn-success { background: var(--accent-green); color: white; }
+        .btn-danger { background: var(--accent-red); color: white; }
+        
+        .btn:active { transform: scale(0.98); }
+
+        .btn-sm {
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            min-height: 36px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            max-height: 400px;
+            background: var(--bg-primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+        }
+
+        th {
+            background: var(--bg-tertiary);
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .mapping-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mapping-item {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+        }
+
+        .mapping-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .mapping-target {
+            font-weight: 600;
+            color: var(--accent-blue);
+            font-size: 1.1rem;
+        }
+
+        .mapping-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        .tag-blue { background: rgba(88, 166, 255, 0.2); color: var(--accent-blue); }
+        .tag-green { background: rgba(63, 185, 80, 0.2); color: var(--accent-green); }
+        .tag-orange { background: rgba(210, 153, 34, 0.2); color: var(--accent-orange); }
+        .tag-purple { background: rgba(163, 113, 247, 0.2); color: var(--accent-purple); }
+
+        .status-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-sm);
+            margin-top: 16px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* Combined Rules Mobile Optimization */
+        .condition-item {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            background: var(--bg-secondary);
+            padding: 8px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+        }
+        
+        .condition-item select, 
+        .condition-item input {
+            min-width: 0; /* Allow shrinking */
+            flex: 1 1 120px; /* Grow and shrink, basis 120px */
+        }
+        
+        .condition-item .btn {
+            flex: 0 0 auto;
+            min-width: auto;
+        }
+
+        /* Config Actions */
+        .config-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .preset-select {
+            flex-grow: 1;
+            min-width: 200px;
+        }
+
+        /* Sticky Action Bar */
+        .action-bar {
+            position: sticky;
+            bottom: 0;
+            background: var(--bg-secondary);
+            padding: 16px 24px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 24px -24px -24px;
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            z-index: 100;
+        }
+
+        /* Modal Mobile Optimization */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            backdrop-filter: blur(2px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            transform: scale(0.95);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            margin-bottom: 16px;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 28px;
+            cursor: pointer;
+            padding: 8px;
+            margin: -8px;
+        }
+
+        /* Column Config Items */
+        .column-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            flex-wrap: wrap;
+        }
+        
+        .column-item input {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .hidden { display: none !important; }
+
+        /* ================= MOBILE SPECIFIC STYLES ================= */
+        @media (max-width: 768px) {
+            .container {
+                padding: 12px;
+                padding-bottom: 80px; /* Space for action bar */
+            }
+
+            header {
+                padding: 20px 12px;
+                margin-bottom: 16px;
+            }
+            
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .card {
+                padding: 16px;
+                border-radius: var(--radius-md);
+            }
+
+            .mapping-body {
+                grid-template-columns: 1fr;
+            }
+
+            /* Config Actions: Stack buttons vertically */
+            .config-actions {
+                flex-direction: column;
+            }
+            
+            .config-actions > div {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .config-actions .btn {
+                flex: 1;
+                min-width: 120px; /* Ensure 2 per row mostly */
+            }
+
+            /* Form Row Stack */
+            .form-row {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            /* Mapping Rules optimization */
+            .combined-result {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .combined-result input {
+                width: 100%;
+            }
+
+            /* Action Bar: Mobile Bottom Sheet style */
+            .action-bar {
+                flex-direction: column;
+                gap: 12px;
+                margin: 0 -12px -12px; /* Offset container padding */
+                padding: 16px;
+                padding-bottom: max(16px, var(--safe-area-bottom));
+                border-radius: 16px 16px 0 0;
+            }
+
+            .action-bar > div {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .action-bar .btn-group {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr; /* Equal width buttons */
+            }
+
+            .action-bar .btn {
+                padding: 10px 4px;
+                font-size: 0.8rem;
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            /* Modal: Full screen on mobile */
+            .modal {
+                width: 100%;
+                height: 100%;
+                max-height: 100%;
+                border-radius: 0;
+                padding-top: 50px; /* Space for close button if needed, or just header */
+            }
+            
+            .rule-check-summary {
+                flex-direction: column;
+            }
+            
+            .rule-check-stat {
+                padding: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .rule-check-stat .stat-value {
+                font-size: 1.5rem;
+                order: 2;
+            }
+            
+            .file-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .file-info .btn {
+                width: 100%;
+                margin-top: 8px;
+            }
+        }
+    </style>
+    <!-- PRESET_CONFIG_START -->
+    <script type="application/json" id="preset-config">
+{
+    "meituan-pixiu": {
+        "name": "美团账单 → 貔貅记账",
+        "skipRows": 16,
+        "targetColumns": [
+            {
+                "name": "交易日期",
+                "defaultValue": ""
+            },
+            {
+                "name": "收支类型",
+                "defaultValue": ""
+            },
+            {
+                "name": "收支项目",
+                "defaultValue": ""
+            },
+            {
+                "name": "金额",
+                "defaultValue": ""
+            },
+            {
+                "name": "账户名称",
+                "defaultValue": ""
+            },
+            {
+                "name": "标签",
+                "defaultValue": ""
+            },
+            {
+                "name": "备注",
+                "defaultValue": ""
+            }
+        ],
+        "mappingRules": {
+            "交易日期": {
+                "type": "date",
+                "sourceColumn": "交易成功时间",
+                "dateFormat": "YYYY-MM-DD"
+            },
+            "收支类型": {
+                "type": "valueMap",
+                "sourceColumn": "收/支",
+                "mappings": {
+                    "支出": "支出",
+                    "收入": "收入"
+                }
+            },
+            "收支项目": {
+                "type": "combinedCondition",
+                "sourceColumn": "订单标题",
+                "combinedConditions": [
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "打车,快车,曹操,滴滴"
+                            }
+                        ],
+                        "targetValue": "打车"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "骑行,单车"
+                            }
+                        ],
+                        "targetValue": "自行车"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "地铁"
+                            }
+                        ],
+                        "targetValue": "地铁"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "timeRange",
+                                "sourceColumn": "交易成功时间",
+                                "startTime": "06:00",
+                                "endTime": "10:00"
+                            },
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单"
+                            }
+                        ],
+                        "targetValue": "早餐"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "timeRange",
+                                "sourceColumn": "交易成功时间",
+                                "startTime": "10:30",
+                                "endTime": "15:00"
+                            },
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "糯米饭,龙虾,鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单"
+                            }
+                        ],
+                        "targetValue": "午餐"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "timeRange",
+                                "sourceColumn": "交易成功时间",
+                                "startTime": "15:00",
+                                "endTime": "21:00"
+                            },
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "糯米饭,龙虾,鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单,烧烤,火锅,串串"
+                            }
+                        ],
+                        "targetValue": "晚餐"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "timeRange",
+                                "sourceColumn": "交易成功时间",
+                                "startTime": "21:00",
+                                "endTime": "23:59"
+                            },
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "糯米饭,龙虾,鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单,烧烤,火锅,串串"
+                            }
+                        ],
+                        "targetValue": "宵夜"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "timeRange",
+                                "sourceColumn": "交易成功时间",
+                                "startTime": "00:00",
+                                "endTime": "06:00"
+                            },
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "糯米饭,龙虾,鸭头,寿司,永和大王,卤肉饭,单人餐,米线,炸鸡,老乡鸡,水饺,面馆,面条,餐厅,餐饮,湘菜,川菜,粤菜,快餐,饭店,牛肉面,拌面,盖饭,炒饭,炒面,点心,小吃,外卖,肯德基,KFC,麦当劳,翠富楼,南京大牌档,海鲜,双人餐,传统小炒,肉蟹煲,香锅,超级碗,恩施宋鸭子,牛肉店,美团买单订单,烧烤,火锅,串串"
+                            }
+                        ],
+                        "targetValue": "宵夜"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "咖啡,瑞幸,Luckin,星巴克,Manner"
+                            }
+                        ],
+                        "targetValue": "咖啡"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "奶茶,茶饮,喜茶,蜜雪,古茗,茶百道,书亦,一点点,COCO,乐乐茶,LELECHA,茶坊苦抹,奈雪的茶,爷爷不泡茶"
+                            }
+                        ],
+                        "targetValue": "奶茶"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "小象超市,美团买菜,菜,超市,便利店"
+                            }
+                        ],
+                        "targetValue": "其他杂项"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "药房,药店,医院,诊所,海王星辰,叮当快药"
+                            }
+                        ],
+                        "targetValue": "中西药"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "电影"
+                            }
+                        ],
+                        "targetValue": "电影"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "KTV"
+                            }
+                        ],
+                        "targetValue": "KTV唱歌"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "游戏"
+                            }
+                        ],
+                        "targetValue": "游戏"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "网吧,电竞"
+                            }
+                        ],
+                        "targetValue": "网吧"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "足道"
+                            }
+                        ],
+                        "targetValue": "推拿足按"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "充电"
+                            }
+                        ],
+                        "targetValue": "充电宝"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "民营机构男性套餐"
+                            }
+                        ],
+                        "targetValue": "体检"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "鲜花店,名创优品,Apple授权专营店"
+                            }
+                        ],
+                        "targetValue": "礼物"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "甜品"
+                            }
+                        ],
+                        "targetValue": "甜品"
+                    },
+                    {
+                        "conditions": [
+                            {
+                                "type": "contains",
+                                "sourceColumn": "订单标题",
+                                "value": "商城订单"
+                            }
+                        ],
+                        "targetValue": "其他杂项"
+                    }
+                ]
+            },
+            "金额": {
+                "type": "amount",
+                "sourceColumn": "实付金额"
+            },
+            "账户名称": {
+                "type": "fuzzyMap",
+                "sourceColumn": "支付方式",
+                "fuzzyMappings": [
+                    {
+                        "contains": "微信",
+                        "mapTo": "微信零钱"
+                    },
+                    {
+                        "contains": "招商银行",
+                        "mapTo": "招商信用卡"
+                    },
+                    {
+                        "contains": "民生",
+                        "mapTo": "民生银行信用卡"
+                    },
+                    {
+                        "contains": "支付宝",
+                        "mapTo": "支付宝余额"
+                    },
+                    {
+                        "contains": "花呗",
+                        "mapTo": "花呗"
+                    },
+                    {
+                        "contains": "白条",
+                        "mapTo": "白条"
+                    }
+                ]
+            },
+            "标签": {
+                "type": "fixed",
+                "fixedValue": "美团"
+            },
+            "备注": {
+                "type": "direct",
+                "sourceColumn": "订单标题"
+            }
+        }
+    }
+}
+    </script>
+    <!-- PRESET_CONFIG_END -->
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div class="container" id="main-container">
+        <header>
+            <h1>📊 账单转换工具</h1>
+            <p>支持自定义映射规则，轻松转换各类账单格式</p>
+        </header>
+
+        <!-- 配置管理区域 -->
+        <div class="card" style="margin-bottom: 24px;">
+            <div class="card-header">
+                <div class="card-title">
+                    <span class="icon">⚙️</span>
+                    配置方案
+                </div>
+            </div>
+            <div class="config-actions">
+                <div style="display: flex; gap: 8px; flex: 1;">
+                    <select id="presetSelect" class="preset-select" onchange="onPresetSelectChange()">
+                        <option value="">-- 选择配置方案 --</option>
+                    </select>
+                    <button class="btn btn-primary" onclick="applySelectedPreset()" title="应用选中的配置方案">✓ 应用</button>
+                </div>
+                <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-secondary" onclick="saveAsNewPreset()">➕ 另存</button>
+                    <button class="btn btn-secondary" onclick="renamePreset()">✏️ 命名</button>
+                    <button class="btn btn-secondary" onclick="deletePreset()">🗑️ 删除</button>
+                    <button class="btn btn-secondary" onclick="exportConfig()">📤 导出</button>
+                    <button class="btn btn-secondary" onclick="importConfig()">📥 导入</button>
+                    <button class="btn btn-primary" onclick="saveRulesToHtml()">💾 保存HTML</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <!-- 左侧：输入配置 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="icon">📁</span>
+                        输入配置
+                    </div>
+                </div>
+
+                <div class="upload-zone hidden" id="uploadZone">
+                    <div class="upload-icon">📄</div>
+                    <p>点击选择或拖拽 CSV 文件</p>
+                    <p class="hint">支持 .csv 格式文件</p>
+                </div>
+                <!-- Separate button for mobile easier clicking if drag drop fails visually -->
+                <button class="btn btn-primary btn-lg" id="mobileUploadBtn" style="display:none; width: 100%; margin-bottom: 16px;" onclick="document.getElementById('fileInput').click()">📄 选择 CSV 文件</button>
+                <input type="file" id="fileInput" accept=".csv">
+
+                <div id="fileInfo" class="file-info hidden">
+                    <span class="file-icon">📄</span>
+                    <div class="file-details">
+                        <div class="file-name" id="fileName"></div>
+                        <div class="file-size" id="fileSize"></div>
+                    </div>
+                    <button class="btn btn-secondary btn-sm" onclick="clearFile()">清除</button>
+                </div>
+
+                <div class="form-row" style="margin-top: 16px;">
+                    <div class="form-group">
+                        <label>跳过行数（表头前）</label>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="number" id="skipRows" value="0" min="0" onchange="parseSourceData()" style="flex: 1;">
+                            <button class="btn btn-secondary" onclick="autoDetectHeader()" title="自动检测表头行">🔍 自动</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>文件编码</label>
+                        <select id="fileEncoding" onchange="parseSourceData()">
+                            <option value="UTF-8">UTF-8</option>
+                            <option value="GBK">GBK</option>
+                            <option value="GB2312">GB2312</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>源数据预览</label>
+                    <div class="table-container" id="sourcePreview">
+                        <div class="empty-state" style="padding: 24px; text-align: center; color: var(--text-muted);">
+                            <div class="empty-icon" style="font-size: 32px; margin-bottom: 8px;">📊</div>
+                            <p>请上传 CSV 文件查看数据</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="status-bar" id="sourceStatus">
+                    <span class="status-text">等待上传文件...</span>
+                </div>
+            </div>
+
+            <!-- 右侧：输出配置 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <span class="icon">📝</span>
+                        输出配置
+                    </div>
+                    <button class="btn btn-primary btn-sm" onclick="showColumnModal()">+ 添加列</button>
+                </div>
+
+                <div class="form-group">
+                    <label>目标列配置</label>
+                    <div class="column-list" id="targetColumns">
+                        <!-- Columns generated by JS -->
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 24px;">
+                    <label>转换结果预览</label>
+                    <div class="table-container" id="resultPreview">
+                        <div class="empty-state" style="padding: 24px; text-align: center; color: var(--text-muted);">
+                            <div class="empty-icon" style="font-size: 32px; margin-bottom: 8px;">🔄</div>
+                            <p>配置映射规则后查看结果</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="status-bar" id="resultStatus">
+                    <span class="status-text">等待转换...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 映射规则配置 -->
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">
+                    <span class="icon">🔗</span>
+                    字段映射规则
+                </div>
+            </div>
+
+            <div class="mapping-list" id="mappingList">
+                <div class="empty-state" style="padding: 24px; text-align: center; color: var(--text-muted);">
+                    <p>请先添加目标列</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sticky Action Bar -->
+        <div class="action-bar">
+            <div>
+                <span class="status-text" id="convertStatus"></span>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="previewResult()">🔄 刷新预览</button>
+                <button class="btn btn-primary" onclick="checkRules()">🔍 规则自检</button>
+                <button class="btn btn-success" onclick="exportCSV()">📥 导出 CSV</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加列弹窗 -->
+    <div class="modal-overlay" id="columnModal">
+        <div class="modal">
+            <div class="modal-header">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 class="modal-title">添加目标列</h3>
+                    <button class="modal-close" onclick="closeColumnModal()">×</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>列名</label>
+                <input type="text" id="newColumnName" placeholder="请输入列名">
+            </div>
+            <div class="form-group">
+                <label>默认值（可选）</label>
+                <input type="text" id="newColumnDefault" placeholder="留空则无默认值">
+            </div>
+            <div class="btn-group" style="margin-top: auto; width: 100%;">
+                <button class="btn btn-secondary" style="flex: 1;" onclick="closeColumnModal()">取消</button>
+                <button class="btn btn-primary" style="flex: 1;" onclick="addColumn()">添加</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 隐藏的导入文件输入 -->
+    <input type="file" id="configImportInput" accept=".json" style="display: none;">
+
+    <!-- 规则自检弹窗 -->
+    <div class="modal-overlay" id="ruleCheckModal">
+        <div class="modal" style="max-width: 900px;">
+            <div class="modal-header">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 class="modal-title">🔍 规则自检结果</h3>
+                    <button class="modal-close" onclick="closeRuleCheckModal()">×</button>
+                </div>
+            </div>
+            <div id="ruleCheckSummary" class="rule-check-summary"></div>
+            <div id="ruleCheckContent" style="flex: 1; overflow-y: auto;"></div>
+            <div class="btn-group" style="margin-top: 20px; width: 100%;">
+                <button class="btn btn-secondary" style="width: 100%;" onclick="closeRuleCheckModal()">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============== 全局状态 ==============
+        let sourceData = [];
+        let sourceHeaders = [];
+        let rawFileContent = '';
+        let targetColumns = [
+            { name: '交易日期', defaultValue: '' },
+            { name: '收支类型', defaultValue: '' },
+            { name: '收支项目', defaultValue: '' },
+            { name: '金额', defaultValue: '' },
+            { name: '账户名称', defaultValue: '' },
+            { name: '标签', defaultValue: '' },
+            { name: '备注', defaultValue: '' }
+        ];
+        let mappingRules = {};
+
+        // ============== 预设配置（从 JSON 标签加载） ==============
+        let presets = {};
+        try {
+            const presetScript = document.getElementById('preset-config');
+            if (presetScript) {
+                presets = JSON.parse(presetScript.textContent);
+            }
+        } catch (e) {
+            console.error('加载预设配置失败:', e);
+        }
+
+        // ============== 文件上传处理 ==============
+        const uploadZone = document.getElementById('uploadZone');
+        const fileInput = document.getElementById('fileInput');
+
+        // Check if mobile for explicit button
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            uploadZone.style.display = 'none';
+            document.getElementById('mobileUploadBtn').style.display = 'block';
+        } else {
+            uploadZone.classList.remove('hidden');
+        }
+
+        uploadZone.addEventListener('click', () => fileInput.click());
+
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('dragover');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFile(files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            if (!file.name.endsWith('.csv')) {
+                showToast('请上传 CSV 格式文件', 'error');
+                return;
+            }
+
+            const encoding = document.getElementById('fileEncoding').value;
+            const reader = new FileReader();
+            
+            reader.onload = (e) => {
+                rawFileContent = e.target.result;
+                document.getElementById('fileName').textContent = file.name;
+                document.getElementById('fileSize').textContent = formatFileSize(file.size);
+                document.getElementById('fileInfo').classList.remove('hidden');
+                document.getElementById('fileInfo').style.display = 'flex'; // Ensure flex
+                uploadZone.classList.add('hidden');
+                document.getElementById('mobileUploadBtn').style.display = 'none';
+                // 自动检测表头行
+                autoDetectHeader();
+            };
+
+            if (encoding === 'UTF-8') {
+                reader.readAsText(file, 'UTF-8');
+            } else {
+                reader.readAsText(file, encoding);
+            }
+        }
+
+        function clearFile() {
+            rawFileContent = '';
+            sourceData = [];
+            sourceHeaders = [];
+            document.getElementById('fileInfo').classList.add('hidden');
+            document.getElementById('fileInfo').style.display = 'none';
+            
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                document.getElementById('mobileUploadBtn').style.display = 'block';
+            } else {
+                uploadZone.classList.remove('hidden');
+            }
+            
+            document.getElementById('sourcePreview').innerHTML = `
+                <div class="empty-state" style="padding: 24px; text-align: center; color: var(--text-muted);">
+                    <div class="empty-icon" style="font-size: 32px; margin-bottom: 8px;">📊</div>
+                    <p>请上传 CSV 文件查看数据</p>
+                </div>
+            `;
+            document.getElementById('sourceStatus').innerHTML = '<span class="status-text">等待上传文件...</span>';
+            renderMappingList();
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        // ============== CSV 解析 ==============
+        function parseCSV(text) {
+            const lines = [];
+            let currentLine = '';
+            let inQuotes = false;
+            
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                
+                if (char === '"') {
+                    if (inQuotes && text[i + 1] === '"') {
+                        currentLine += '"';
+                        i++;
+                    } else {
+                        inQuotes = !inQuotes;
+                    }
+                } else if ((char === '\n' || char === '\r') && !inQuotes) {
+                    if (currentLine.trim()) {
+                        lines.push(currentLine);
+                    }
+                    currentLine = '';
+                    if (char === '\r' && text[i + 1] === '\n') {
+                        i++;
+                    }
+                } else {
+                    currentLine += char;
+                }
+            }
+            
+            if (currentLine.trim()) {
+                lines.push(currentLine);
+            }
+            
+            return lines.map(line => {
+                const cells = [];
+                let currentCell = '';
+                let inQuotes = false;
+                
+                for (let i = 0; i < line.length; i++) {
+                    const char = line[i];
+                    
+                    if (char === '"') {
+                        if (inQuotes && line[i + 1] === '"') {
+                            currentCell += '"';
+                            i++;
+                        } else {
+                            inQuotes = !inQuotes;
+                        }
+                    } else if (char === ',' && !inQuotes) {
+                        cells.push(currentCell.trim());
+                        currentCell = '';
+                    } else {
+                        currentCell += char;
+                    }
+                }
+                
+                cells.push(currentCell.trim());
+                return cells;
+            });
+        }
+
+        function parseSourceData() {
+            if (!rawFileContent) return;
+
+            const skipRows = parseInt(document.getElementById('skipRows').value) || 0;
+            const allRows = parseCSV(rawFileContent);
+            
+            if (allRows.length <= skipRows) {
+                showToast('跳过行数过多，没有数据可解析', 'error');
+                return;
+            }
+
+            sourceHeaders = allRows[skipRows] || [];
+            sourceData = allRows.slice(skipRows + 1).filter(row => row.some(cell => cell.trim()));
+
+            renderSourcePreview();
+            renderMappingList();
+            
+            document.getElementById('sourceStatus').innerHTML = `
+                <span class="status-text">共 <span class="status-count">${sourceData.length}</span> 条记录，${sourceHeaders.length} 列</span>
+            `;
+        }
+
+        function autoDetectHeader() {
+            if (!rawFileContent) {
+                showToast('请先上传文件', 'error');
+                return;
+            }
+
+            const allRows = parseCSV(rawFileContent);
+            if (allRows.length === 0) {
+                showToast('文件内容为空', 'error');
+                return;
+            }
+
+            // 常见的表头关键词
+            const headerKeywords = [
+                '日期', '时间', '金额', '类型', '账户', '备注', '标签', '收支', '支付',
+                '交易', '订单', '商家', '分类', '项目', '名称', '编号', '单号',
+                'date', 'time', 'amount', 'type', 'account', 'note', 'category'
+            ];
+
+            let bestRowIndex = 0;
+            let bestScore = -1;
+
+            // 分析前50行，找到最可能是表头的行
+            const maxScan = Math.min(allRows.length, 50);
+            
+            for (let i = 0; i < maxScan; i++) {
+                const row = allRows[i];
+                if (!row || row.length === 0) continue;
+
+                let score = 0;
+                
+                // 1. 列数较多的行得分更高（但不能是空列太多）
+                const nonEmptyCols = row.filter(cell => cell && cell.trim()).length;
+                if (nonEmptyCols >= 3) {
+                    score += nonEmptyCols * 2;
+                }
+
+                // 2. 包含表头关键词的得分更高
+                const rowText = row.join(' ').toLowerCase();
+                headerKeywords.forEach(keyword => {
+                    if (rowText.includes(keyword.toLowerCase())) {
+                        score += 10;
+                    }
+                });
+
+                // 3. 检查下一行是否看起来像数据行（包含数字或日期格式）
+                if (i + 1 < allRows.length) {
+                    const nextRow = allRows[i + 1];
+                    if (nextRow && nextRow.length > 0) {
+                        const nextRowText = nextRow.join(' ');
+                        // 如果下一行包含日期格式或数字，说明当前行可能是表头
+                        if (/\d{4}[-\/]\d{1,2}[-\/]\d{1,2}/.test(nextRowText)) {
+                            score += 15; // 日期格式
+                        }
+                        if (/¥?\d+\.?\d*/.test(nextRowText)) {
+                            score += 5; // 数字/金额格式
+                        }
+                    }
+                }
+
+                // 4. 如果当前行本身包含太多数字，可能是数据行而非表头
+                const numbersInRow = (row.join(' ').match(/\d+\.?\d*/g) || []).length;
+                if (numbersInRow > row.length) {
+                    score -= 10;
+                }
+
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestRowIndex = i;
+                }
+            }
+
+            // 更新跳过行数并重新解析
+            document.getElementById('skipRows').value = bestRowIndex;
+            parseSourceData();
+            
+            showToast(`已自动检测到表头在第 ${bestRowIndex + 1} 行（跳过 ${bestRowIndex} 行）`, 'success');
+        }
+
+        function renderSourcePreview() {
+            if (sourceHeaders.length === 0) return;
+
+            const previewData = sourceData.slice(0, 10);
+            let html = '<table><thead><tr>';
+            
+            sourceHeaders.forEach(header => {
+                html += `<th>${escapeHtml(header)}</th>`;
+            });
+            
+            html += '</tr></thead><tbody>';
+            
+            previewData.forEach(row => {
+                html += '<tr>';
+                sourceHeaders.forEach((_, i) => {
+                    html += `<td>${escapeHtml(row[i] || '')}</td>`;
+                });
+                html += '</tr>';
+            });
+            
+            html += '</tbody></table>';
+            
+            if (sourceData.length > 10) {
+                html += `<div class="scroll-hint">显示前 10 条，共 ${sourceData.length} 条</div>`;
+            }
+            
+            document.getElementById('sourcePreview').innerHTML = html;
+        }
+
+        // ============== 目标列管理 ==============
+        function renderTargetColumns() {
+            const container = document.getElementById('targetColumns');
+            let html = '';
+            
+            targetColumns.forEach((col, index) => {
+                html += `
+                    <div class="column-item">
+                        <span class="drag-handle">⋮⋮</span>
+                        <input type="text" value="${escapeHtml(col.name)}" 
+                            onchange="updateColumnName(${index}, this.value)" 
+                            placeholder="列名">
+                        <input type="text" value="${escapeHtml(col.defaultValue)}" 
+                            onchange="updateColumnDefault(${index}, this.value)" 
+                            placeholder="默认值" style="max-width: 120px;">
+                        <button class="btn btn-danger btn-sm" onclick="removeColumn(${index})">删除</button>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html || '<div class="empty-state"><p>暂无目标列</p></div>';
+        }
+
+        function updateColumnName(index, name) {
+            const oldName = targetColumns[index].name;
+            targetColumns[index].name = name;
+            
+            // 更新映射规则中的键名
+            if (mappingRules[oldName]) {
+                mappingRules[name] = mappingRules[oldName];
+                delete mappingRules[oldName];
+            }
+            
+            renderMappingList();
+        }
+
+        function updateColumnDefault(index, value) {
+            targetColumns[index].defaultValue = value;
+        }
+
+        function removeColumn(index) {
+            const name = targetColumns[index].name;
+            delete mappingRules[name];
+            targetColumns.splice(index, 1);
+            renderTargetColumns();
+            renderMappingList();
+        }
+
+        function showColumnModal() {
+            document.getElementById('columnModal').classList.add('active');
+            document.getElementById('newColumnName').value = '';
+            document.getElementById('newColumnDefault').value = '';
+            document.getElementById('newColumnName').focus();
+        }
+
+        function closeColumnModal() {
+            document.getElementById('columnModal').classList.remove('active');
+        }
+
+        function addColumn() {
+            const name = document.getElementById('newColumnName').value.trim();
+            const defaultValue = document.getElementById('newColumnDefault').value;
+            
+            if (!name) {
+                showToast('请输入列名', 'error');
+                return;
+            }
+            
+            if (targetColumns.some(col => col.name === name)) {
+                showToast('列名已存在', 'error');
+                return;
+            }
+            
+            targetColumns.push({ name, defaultValue });
+            renderTargetColumns();
+            renderMappingList();
+            closeColumnModal();
+            showToast('列添加成功', 'success');
+        }
+
+        // ============== 映射规则管理 ==============
+        function renderMappingList() {
+            const container = document.getElementById('mappingList');
+            let html = '';
+            
+            targetColumns.forEach(col => {
+                const rule = mappingRules[col.name] || { type: 'fixed', fixedValue: col.defaultValue };
+                
+                html += `
+                    <div class="mapping-item">
+                        <div class="mapping-header">
+                            <span class="mapping-target">${escapeHtml(col.name)}</span>
+                            <span class="tag ${getRuleTypeTag(rule.type)}">${getRuleTypeName(rule.type)}</span>
+                        </div>
+                        <div class="mapping-body">
+                            <div class="form-group">
+                                <label>转换类型</label>
+                                <select onchange="updateRuleType('${escapeHtml(col.name)}', this.value)">
+                                    <option value="direct" ${rule.type === 'direct' ? 'selected' : ''}>直接映射</option>
+                                    <option value="date" ${rule.type === 'date' ? 'selected' : ''}>日期格式转换</option>
+                                    <option value="amount" ${rule.type === 'amount' ? 'selected' : ''}>金额处理</option>
+                                    <option value="valueMap" ${rule.type === 'valueMap' ? 'selected' : ''}>值映射</option>
+                                    <option value="fuzzyMap" ${rule.type === 'fuzzyMap' ? 'selected' : ''}>模糊匹配映射</option>
+                                    <option value="combinedCondition" ${rule.type === 'combinedCondition' ? 'selected' : ''}>组合条件映射</option>
+                                    <option value="fixed" ${rule.type === 'fixed' ? 'selected' : ''}>固定值</option>
+                                    <option value="expression" ${rule.type === 'expression' ? 'selected' : ''}>自定义表达式</option>
+                                </select>
+                            </div>
+                            ${renderRuleConfig(col.name, rule)}
+                        </div>
+                        ${renderRuleExtra(col.name, rule)}
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html || '<div class="empty-state"><p>请先添加目标列</p></div>';
+        }
+
+        function renderRuleConfig(colName, rule) {
+            const sourceOptions = sourceHeaders.map(h => 
+                `<option value="${escapeHtml(h)}" ${rule.sourceColumn === h ? 'selected' : ''}>${escapeHtml(h)}</option>`
+            ).join('');
+            
+            switch (rule.type) {
+                case 'direct':
+                case 'date':
+                case 'amount':
+                case 'valueMap':
+                case 'fuzzyMap':
+                    return `
+                        <div class="form-group">
+                            <label>源列</label>
+                            <select onchange="updateRuleSourceColumn('${escapeHtml(colName)}', this.value)">
+                                <option value="">-- 选择源列 --</option>
+                                ${sourceOptions}
+                            </select>
+                        </div>
+                    `;
+                case 'fixed':
+                    return `
+                        <div class="form-group">
+                            <label>固定值</label>
+                            <input type="text" value="${escapeHtml(rule.fixedValue || '')}" 
+                                onchange="updateRuleFixedValue('${escapeHtml(colName)}', this.value)"
+                                placeholder="输入固定值">
+                        </div>
+                    `;
+                case 'expression':
+                    return `
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label>JavaScript 表达式 (使用 row.列名 访问数据)</label>
+                            <textarea onchange="updateRuleExpression('${escapeHtml(colName)}', this.value)"
+                                placeholder="例如：row['金额'].replace('¥', '')">${escapeHtml(rule.expression || '')}</textarea>
+                        </div>
+                    `;
+                case 'combinedCondition':
+                    return `
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label>默认值（无规则匹配时）</label>
+                            <input type="text" value="${escapeHtml(rule.defaultValue || '')}"
+                                onchange="updateCombinedDefault('${escapeHtml(colName)}', this.value)"
+                                placeholder="未匹配任何规则时的值">
+                        </div>
+                    `;
+                default:
+                    return '';
+            }
+        }
+
+        function renderRuleExtra(colName, rule) {
+            if (rule.type === 'date') {
+                return `
+                    <div class="mapping-extra">
+                        <div class="form-group">
+                            <label>日期格式（输出）</label>
+                            <select onchange="updateRuleDateFormat('${escapeHtml(colName)}', this.value)">
+                                <option value="YYYY-MM-DD" ${rule.dateFormat === 'YYYY-MM-DD' ? 'selected' : ''}>YYYY-MM-DD</option>
+                                <option value="YYYY/MM/DD" ${rule.dateFormat === 'YYYY/MM/DD' ? 'selected' : ''}>YYYY/MM/DD</option>
+                                <option value="MM-DD-YYYY" ${rule.dateFormat === 'MM-DD-YYYY' ? 'selected' : ''}>MM-DD-YYYY</option>
+                            </select>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (rule.type === 'valueMap') {
+                const mappings = rule.valueMappings || [];
+                let mappingsHtml = mappings.map((m, i) => `
+                    <div class="value-mapping-item">
+                        <input type="text" value="${escapeHtml(m.from)}" 
+                            onchange="updateValueMapping('${escapeHtml(colName)}', ${i}, 'from', this.value)"
+                            placeholder="原值">
+                        <span class="arrow-icon">→</span>
+                        <input type="text" value="${escapeHtml(m.to)}" 
+                            onchange="updateValueMapping('${escapeHtml(colName)}', ${i}, 'to', this.value)"
+                            placeholder="映射值">
+                        <button class="btn btn-danger btn-sm" onclick="removeValueMapping('${escapeHtml(colName)}', ${i})">删除</button>
+                    </div>
+                `).join('');
+                
+                return `
+                    <div class="mapping-extra">
+                        <label>值映射规则（精确匹配）</label>
+                        <div class="value-mapping-list">
+                            ${mappingsHtml}
+                        </div>
+                        <button class="btn btn-secondary btn-sm" style="margin-top: 8px;" 
+                            onclick="addValueMapping('${escapeHtml(colName)}')">+ 添加映射</button>
+                    </div>
+                `;
+            }
+            
+            if (rule.type === 'fuzzyMap') {
+                const mappings = rule.fuzzyMappings || [];
+                let mappingsHtml = mappings.map((m, i) => `
+                    <div class="fuzzy-mapping-item">
+                        <input type="text" value="${escapeHtml(m.contains)}" 
+                            onchange="updateFuzzyMapping('${escapeHtml(colName)}', ${i}, 'contains', this.value)"
+                            placeholder="包含字符串">
+                        <span class="arrow-icon">→</span>
+                        <input type="text" value="${escapeHtml(m.mapTo)}" 
+                            onchange="updateFuzzyMapping('${escapeHtml(colName)}', ${i}, 'mapTo', this.value)"
+                            placeholder="映射值">
+                        <button class="btn btn-danger btn-sm" onclick="removeFuzzyMapping('${escapeHtml(colName)}', ${i})">删除</button>
+                    </div>
+                `).join('');
+                
+                return `
+                    <div class="mapping-extra">
+                        <label>模糊匹配规则（包含即匹配，按顺序优先）</label>
+                        <div class="fuzzy-mapping-list">
+                            ${mappingsHtml}
+                        </div>
+                        <button class="btn btn-secondary btn-sm" style="margin-top: 8px;" 
+                            onclick="addFuzzyMapping('${escapeHtml(colName)}')">+ 添加规则</button>
+                        <div class="form-group" style="margin-top: 12px;">
+                            <label>默认值（无匹配时）</label>
+                            <input type="text" value="${escapeHtml(rule.defaultValue || '')}"
+                                onchange="updateFuzzyDefault('${escapeHtml(colName)}', this.value)"
+                                placeholder="未匹配时的默认值">
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (rule.type === 'combinedCondition') {
+                const rules = rule.combinedConditions || [];
+                const sourceOptions = sourceHeaders.map(h => 
+                    `<option value="${escapeHtml(h)}">${escapeHtml(h)}</option>`
+                ).join('');
+                
+                let rulesHtml = rules.map((r, ruleIndex) => {
+                    const conditionsHtml = (r.conditions || []).map((cond, condIndex) => `
+                        <div class="condition-item">
+                            <select onchange="updateCombinedConditionType('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, this.value)">
+                                <option value="timeRange" ${cond.type === 'timeRange' ? 'selected' : ''}>时间范围</option>
+                                <option value="contains" ${cond.type === 'contains' ? 'selected' : ''}>包含任一(OR)</option>
+                                <option value="containsAll" ${cond.type === 'containsAll' ? 'selected' : ''}>包含全部(AND)</option>
+                                <option value="equals" ${cond.type === 'equals' ? 'selected' : ''}>精确匹配</option>
+                                <option value="startsWith" ${cond.type === 'startsWith' ? 'selected' : ''}>开头匹配</option>
+                                <option value="regex" ${cond.type === 'regex' ? 'selected' : ''}>正则匹配</option>
+                            </select>
+                            ${renderConditionInputs(colName, ruleIndex, condIndex, cond, sourceOptions)}
+                            <button class="btn btn-danger btn-sm" onclick="removeCombinedCondition('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex})">×</button>
+                        </div>
+                    `).join('');
+                    
+                    return `
+                        <div class="combined-rule-item">
+                            <div class="combined-rule-header">
+                                <span class="rule-title">规则 ${ruleIndex + 1}</span>
+                                <button class="btn btn-danger btn-sm" onclick="removeCombinedRule('${escapeHtml(colName)}', ${ruleIndex})">删除规则</button>
+                            </div>
+                            <label style="font-size: 0.85rem; color: var(--text-muted);">条件（全部满足时匹配）</label>
+                            <div class="condition-list">
+                                ${conditionsHtml || '<div style="color: var(--text-muted); padding: 12px;">暂无条件</div>'}
+                            </div>
+                            <button class="btn btn-secondary btn-sm" onclick="addCombinedCondition('${escapeHtml(colName)}', ${ruleIndex})">+ 添加条件</button>
+                            <div class="combined-result">
+                                <span style="color: var(--text-secondary);">匹配后映射为：</span>
+                                <input type="text" value="${escapeHtml(r.targetValue || '')}"
+                                    onchange="updateCombinedTargetValue('${escapeHtml(colName)}', ${ruleIndex}, this.value)"
+                                    placeholder="映射值">
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                return `
+                    <div class="mapping-extra">
+                        <label>组合条件规则（按顺序匹配，满足所有条件时映射）</label>
+                        <div class="combined-rule-list">
+                            ${rulesHtml || '<div style="color: var(--text-muted); padding: 12px;">暂无规则，点击下方按钮添加</div>'}
+                        </div>
+                        <button class="btn btn-primary btn-sm" style="margin-top: 8px;" 
+                            onclick="addCombinedRule('${escapeHtml(colName)}')">+ 添加组合规则</button>
+                    </div>
+                `;
+            }
+            
+            return '';
+        }
+        
+        function renderConditionInputs(colName, ruleIndex, condIndex, cond, sourceOptions) {
+            switch (cond.type) {
+                case 'timeRange':
+                    return `
+                        <select onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'sourceColumn', this.value)">
+                            <option value="">选择时间列</option>
+                            ${sourceOptions.replace(`value="${escapeHtml(cond.sourceColumn)}"`, `value="${escapeHtml(cond.sourceColumn)}" selected`)}
+                        </select>
+                        <input type="time" value="${cond.startTime || '11:00'}"
+                            onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'startTime', this.value)"
+                            style="width: 100px;">
+                        <span style="color: var(--text-muted);">至</span>
+                        <input type="time" value="${cond.endTime || '14:00'}"
+                            onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'endTime', this.value)"
+                            style="width: 100px;">
+                    `;
+                case 'contains':
+                    return `
+                        <select onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'sourceColumn', this.value)">
+                            <option value="">选择列</option>
+                            ${sourceOptions.replace(`value="${escapeHtml(cond.sourceColumn)}"`, `value="${escapeHtml(cond.sourceColumn)}" selected`)}
+                        </select>
+                        <input type="text" value="${escapeHtml(cond.value || '')}"
+                            onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'value', this.value)"
+                            placeholder="关键词，逗号分隔，匹配任一" style="min-width: 200px;"
+                            title="多关键词用逗号分隔，匹配任一即可（OR关系）">
+                    `;
+                case 'containsAll':
+                    return `
+                        <select onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'sourceColumn', this.value)">
+                            <option value="">选择列</option>
+                            ${sourceOptions.replace(`value="${escapeHtml(cond.sourceColumn)}"`, `value="${escapeHtml(cond.sourceColumn)}" selected`)}
+                        </select>
+                        <input type="text" value="${escapeHtml(cond.value || '')}"
+                            onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'value', this.value)"
+                            placeholder="关键词，逗号分隔，需全部包含" style="min-width: 200px;"
+                            title="多关键词用逗号分隔，需要全部匹配（AND关系）">
+                    `;
+                case 'startsWith':
+                    return `
+                        <select onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'sourceColumn', this.value)">
+                            <option value="">选择列</option>
+                            ${sourceOptions.replace(`value="${escapeHtml(cond.sourceColumn)}"`, `value="${escapeHtml(cond.sourceColumn)}" selected`)}
+                        </select>
+                        <input type="text" value="${escapeHtml(cond.value || '')}"
+                            onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'value', this.value)"
+                            placeholder="开头文本">
+                    `;
+                case 'equals':
+                    return `
+                        <select onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'sourceColumn', this.value)">
+                            <option value="">选择列</option>
+                            ${sourceOptions.replace(`value="${escapeHtml(cond.sourceColumn)}"`, `value="${escapeHtml(cond.sourceColumn)}" selected`)}
+                        </select>
+                        <input type="text" value="${escapeHtml(cond.value || '')}"
+                            onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'value', this.value)"
+                            placeholder="精确匹配值">
+                    `;
+                case 'regex':
+                    return `
+                        <select onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'sourceColumn', this.value)">
+                            <option value="">选择列</option>
+                            ${sourceOptions.replace(`value="${escapeHtml(cond.sourceColumn)}"`, `value="${escapeHtml(cond.sourceColumn)}" selected`)}
+                        </select>
+                        <input type="text" value="${escapeHtml(cond.value || '')}"
+                            onchange="updateCombinedConditionField('${escapeHtml(colName)}', ${ruleIndex}, ${condIndex}, 'value', this.value)"
+                            placeholder="正则表达式" style="min-width: 180px;"
+                            title="JavaScript正则表达式，如：老乡鸡|水饺|面条">
+                    `;
+                default:
+                    return '';
+            }
+        }
+
+        function getRuleTypeName(type) {
+            const names = {
+                'direct': '直接映射',
+                'date': '日期转换',
+                'amount': '金额处理',
+                'valueMap': '值映射',
+                'fuzzyMap': '模糊匹配',
+                'combinedCondition': '组合条件',
+                'fixed': '固定值',
+                'expression': '表达式'
+            };
+            return names[type] || type;
+        }
+
+        function getRuleTypeTag(type) {
+            const tags = {
+                'direct': 'tag-blue',
+                'date': 'tag-green',
+                'amount': 'tag-orange',
+                'valueMap': 'tag-blue',
+                'fuzzyMap': 'tag-green',
+                'combinedCondition': 'tag-purple',
+                'fixed': '',
+                'expression': 'tag-orange'
+            };
+            return tags[type] || '';
+        }
+
+        function updateRuleType(colName, type) {
+            mappingRules[colName] = mappingRules[colName] || {};
+            mappingRules[colName].type = type;
+            
+            if (type === 'valueMap' && !mappingRules[colName].valueMappings) {
+                mappingRules[colName].valueMappings = [];
+            }
+            if (type === 'fuzzyMap' && !mappingRules[colName].fuzzyMappings) {
+                mappingRules[colName].fuzzyMappings = [];
+            }
+            if (type === 'combinedCondition' && !mappingRules[colName].combinedConditions) {
+                mappingRules[colName].combinedConditions = [];
+            }
+            if (type === 'date' && !mappingRules[colName].dateFormat) {
+                mappingRules[colName].dateFormat = 'YYYY-MM-DD';
+            }
+            
+            renderMappingList();
+        }
+
+        function updateRuleSourceColumn(colName, value) {
+            mappingRules[colName] = mappingRules[colName] || {};
+            mappingRules[colName].sourceColumn = value;
+        }
+
+        function updateRuleFixedValue(colName, value) {
+            mappingRules[colName] = mappingRules[colName] || { type: 'fixed' };
+            mappingRules[colName].fixedValue = value;
+        }
+
+        function updateRuleExpression(colName, value) {
+            mappingRules[colName] = mappingRules[colName] || { type: 'expression' };
+            mappingRules[colName].expression = value;
+        }
+
+        function updateRuleDateFormat(colName, value) {
+            mappingRules[colName] = mappingRules[colName] || { type: 'date' };
+            mappingRules[colName].dateFormat = value;
+        }
+
+        // 值映射
+        function addValueMapping(colName) {
+            mappingRules[colName] = mappingRules[colName] || { type: 'valueMap', valueMappings: [] };
+            mappingRules[colName].valueMappings = mappingRules[colName].valueMappings || [];
+            mappingRules[colName].valueMappings.push({ from: '', to: '' });
+            renderMappingList();
+        }
+
+        function updateValueMapping(colName, index, field, value) {
+            if (mappingRules[colName] && mappingRules[colName].valueMappings) {
+                mappingRules[colName].valueMappings[index][field] = value;
+            }
+        }
+
+        function removeValueMapping(colName, index) {
+            if (mappingRules[colName] && mappingRules[colName].valueMappings) {
+                mappingRules[colName].valueMappings.splice(index, 1);
+                renderMappingList();
+            }
+        }
+
+        // 模糊匹配映射
+        function addFuzzyMapping(colName) {
+            mappingRules[colName] = mappingRules[colName] || { type: 'fuzzyMap', fuzzyMappings: [] };
+            mappingRules[colName].fuzzyMappings = mappingRules[colName].fuzzyMappings || [];
+            mappingRules[colName].fuzzyMappings.push({ contains: '', mapTo: '' });
+            renderMappingList();
+        }
+
+        function updateFuzzyMapping(colName, index, field, value) {
+            if (mappingRules[colName] && mappingRules[colName].fuzzyMappings) {
+                mappingRules[colName].fuzzyMappings[index][field] = value;
+            }
+        }
+
+        function removeFuzzyMapping(colName, index) {
+            if (mappingRules[colName] && mappingRules[colName].fuzzyMappings) {
+                mappingRules[colName].fuzzyMappings.splice(index, 1);
+                renderMappingList();
+            }
+        }
+
+        function updateFuzzyDefault(colName, value) {
+            mappingRules[colName] = mappingRules[colName] || { type: 'fuzzyMap' };
+            mappingRules[colName].defaultValue = value;
+        }
+
+        // 组合条件映射
+        function updateCombinedDefault(colName, value) {
+            mappingRules[colName] = mappingRules[colName] || { type: 'combinedCondition' };
+            mappingRules[colName].defaultValue = value;
+        }
+
+        function addCombinedRule(colName) {
+            mappingRules[colName] = mappingRules[colName] || { type: 'combinedCondition', combinedConditions: [] };
+            mappingRules[colName].combinedConditions = mappingRules[colName].combinedConditions || [];
+            mappingRules[colName].combinedConditions.push({
+                conditions: [],
+                mapTo: ''
+            });
+            renderMappingList();
+        }
+
+        function removeCombinedRule(colName, ruleIndex) {
+            if (mappingRules[colName] && mappingRules[colName].combinedConditions) {
+                mappingRules[colName].combinedConditions.splice(ruleIndex, 1);
+                renderMappingList();
+            }
+        }
+
+        function updateCombinedTargetValue(colName, ruleIndex, value) {
+            if (mappingRules[colName] && mappingRules[colName].combinedConditions) {
+                mappingRules[colName].combinedConditions[ruleIndex].targetValue = value;
+            }
+        }
+
+        function addCombinedCondition(colName, ruleIndex) {
+            if (mappingRules[colName] && mappingRules[colName].combinedConditions) {
+                mappingRules[colName].combinedConditions[ruleIndex].conditions = 
+                    mappingRules[colName].combinedConditions[ruleIndex].conditions || [];
+                mappingRules[colName].combinedConditions[ruleIndex].conditions.push({
+                    type: 'contains',
+                    sourceColumn: '',
+                    value: ''
+                });
+                renderMappingList();
+            }
+        }
+
+        function removeCombinedCondition(colName, ruleIndex, condIndex) {
+            if (mappingRules[colName] && mappingRules[colName].combinedConditions) {
+                mappingRules[colName].combinedConditions[ruleIndex].conditions.splice(condIndex, 1);
+                renderMappingList();
+            }
+        }
+
+        function updateCombinedConditionType(colName, ruleIndex, condIndex, type) {
+            if (mappingRules[colName] && mappingRules[colName].combinedConditions) {
+                const cond = mappingRules[colName].combinedConditions[ruleIndex].conditions[condIndex];
+                cond.type = type;
+                // 初始化时间范围默认值
+                if (type === 'timeRange') {
+                    cond.startTime = cond.startTime || '11:00';
+                    cond.endTime = cond.endTime || '14:00';
+                }
+                renderMappingList();
+            }
+        }
+
+        function updateCombinedConditionField(colName, ruleIndex, condIndex, field, value) {
+            if (mappingRules[colName] && mappingRules[colName].combinedConditions) {
+                mappingRules[colName].combinedConditions[ruleIndex].conditions[condIndex][field] = value;
+            }
+        }
+
+        // ============== 数据转换 ==============
+        function transformData() {
+            if (sourceData.length === 0) return [];
+            
+            return sourceData.map((row, rowIndex) => {
+                const rowObj = {};
+                sourceHeaders.forEach((header, i) => {
+                    rowObj[header] = row[i] || '';
+                });
+                
+                const result = {};
+                targetColumns.forEach(col => {
+                    result[col.name] = applyRule(rowObj, col.name, col.defaultValue);
+                });
+                
+                return result;
+            });
+        }
+
+        function applyRule(row, colName, defaultValue) {
+            const rule = mappingRules[colName];
+            
+            if (!rule) {
+                return defaultValue || '';
+            }
+            
+            try {
+                switch (rule.type) {
+                    case 'direct':
+                        return rule.sourceColumn ? (row[rule.sourceColumn] || '') : defaultValue;
+                    
+                    case 'date':
+                        if (!rule.sourceColumn) return defaultValue;
+                        const dateStr = row[rule.sourceColumn] || '';
+                        return formatDate(dateStr, rule.dateFormat);
+                    
+                    case 'amount':
+                        if (!rule.sourceColumn) return defaultValue;
+                        const amountStr = row[rule.sourceColumn] || '';
+                        return amountStr.replace(/[¥￥,]/g, '').trim();
+                    
+                    case 'valueMap':
+                        if (!rule.sourceColumn) return defaultValue;
+                        const sourceVal = row[rule.sourceColumn] || '';
+                        const mapping = (rule.valueMappings || []).find(m => m.from === sourceVal);
+                        return mapping ? mapping.to : sourceVal;
+                    
+                    case 'fuzzyMap':
+                        if (!rule.sourceColumn) return rule.defaultValue || defaultValue;
+                        const fuzzyVal = row[rule.sourceColumn] || '';
+                        const fuzzyMatch = (rule.fuzzyMappings || []).find(m => 
+                            m.contains && fuzzyVal.includes(m.contains)
+                        );
+                        return fuzzyMatch ? fuzzyMatch.mapTo : (rule.defaultValue || defaultValue);
+                    
+                    case 'combinedCondition':
+                        const combinedConditions = rule.combinedConditions || [];
+                        for (const combinedRule of combinedConditions) {
+                            const conditions = combinedRule.conditions || [];
+                            if (conditions.length === 0) continue;
+                            
+                            const allMatch = conditions.every(cond => {
+                                const sourceVal = row[cond.sourceColumn] || '';
+                                
+                                switch (cond.type) {
+                                    case 'timeRange':
+                                        // 从日期时间字符串中提取时间
+                                        const timeMatch = sourceVal.match(/(\d{1,2}):(\d{2})/);
+                                        if (!timeMatch) return false;
+                                        const hour = parseInt(timeMatch[1]);
+                                        const minute = parseInt(timeMatch[2]);
+                                        const timeMinutes = hour * 60 + minute;
+                                        
+                                        const [startH, startM] = (cond.startTime || '00:00').split(':').map(Number);
+                                        const [endH, endM] = (cond.endTime || '23:59').split(':').map(Number);
+                                        const startMinutes = startH * 60 + startM;
+                                        const endMinutes = endH * 60 + endM;
+                                        
+                                        return timeMinutes >= startMinutes && timeMinutes <= endMinutes;
+                                    
+                                    case 'contains':
+                                        // 支持多关键词（逗号分隔），匹配任一即可（OR关系）
+                                        if (!cond.value) return false;
+                                        const keywords = cond.value.split(/[,，]/).map(k => k.trim()).filter(k => k);
+                                        return keywords.some(keyword => sourceVal.includes(keyword));
+                                    
+                                    case 'containsAll':
+                                        // 支持多关键词（逗号分隔），需全部匹配（AND关系）
+                                        if (!cond.value) return false;
+                                        const allKeywords = cond.value.split(/[,，]/).map(k => k.trim()).filter(k => k);
+                                        return allKeywords.every(keyword => sourceVal.includes(keyword));
+                                    
+                                    case 'equals':
+                                        return sourceVal === cond.value;
+                                    
+                                    case 'startsWith':
+                                        return cond.value && sourceVal.startsWith(cond.value);
+                                    
+                                    case 'regex':
+                                        // 正则表达式匹配
+                                        if (!cond.value) return false;
+                                        try {
+                                            const regex = new RegExp(cond.value, 'i');
+                                            return regex.test(sourceVal);
+                                        } catch (e) {
+                                            return false;
+                                        }
+                                    
+                                    default:
+                                        return false;
+                                }
+                            });
+                            
+                            if (allMatch) {
+                                return combinedRule.targetValue || '';
+                            }
+                        }
+                        return rule.defaultValue || defaultValue;
+                    
+                    case 'fixed':
+                        return rule.fixedValue !== undefined ? rule.fixedValue : defaultValue;
+                    
+                    case 'expression':
+                        if (!rule.expression) return defaultValue;
+                        const fn = new Function('row', `return ${rule.expression}`);
+                        return fn(row) || '';
+                    
+                    default:
+                        return defaultValue;
+                }
+            } catch (e) {
+                console.error(`Error applying rule for ${colName}:`, e);
+                return defaultValue;
+            }
+        }
+
+        function formatDate(dateStr, format) {
+            if (!dateStr) return '';
+            
+            // 尝试解析各种日期格式
+            const match = dateStr.match(/(\d{4})[/-](\d{1,2})[/-](\d{1,2})/);
+            if (!match) return dateStr;
+            
+            const [, year, month, day] = match;
+            const mm = month.padStart(2, '0');
+            const dd = day.padStart(2, '0');
+            
+            switch (format) {
+                case 'YYYY-MM-DD':
+                    return `${year}-${mm}-${dd}`;
+                case 'YYYY/MM/DD':
+                    return `${year}/${mm}/${dd}`;
+                case 'MM-DD-YYYY':
+                    return `${mm}-${dd}-${year}`;
+                default:
+                    return `${year}-${mm}-${dd}`;
+            }
+        }
+
+        // ============== 预览和导出 ==============
+        function previewResult() {
+            if (sourceData.length === 0) {
+                showToast('请先上传源数据文件', 'error');
+                return;
+            }
+            
+            const result = transformData();
+            const previewData = result.slice(0, 10);
+            
+            let html = '<table><thead><tr>';
+            targetColumns.forEach(col => {
+                html += `<th>${escapeHtml(col.name)}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+            
+            previewData.forEach(row => {
+                html += '<tr>';
+                targetColumns.forEach(col => {
+                    html += `<td>${escapeHtml(row[col.name] || '')}</td>`;
+                });
+                html += '</tr>';
+            });
+            
+            html += '</tbody></table>';
+            
+            if (result.length > 10) {
+                html += `<div class="scroll-hint">显示前 10 条，共 ${result.length} 条</div>`;
+            }
+            
+            document.getElementById('resultPreview').innerHTML = html;
+            document.getElementById('resultStatus').innerHTML = `
+                <span class="status-text">已转换 <span class="status-count">${result.length}</span> 条记录</span>
+            `;
+            document.getElementById('convertStatus').textContent = `✅ 预览已更新`;
+        }
+
+        function exportCSV() {
+            if (sourceData.length === 0) {
+                showToast('请先上传源数据文件', 'error');
+                return;
+            }
+            
+            const result = transformData();
+            
+            // 构建 CSV
+            const headers = targetColumns.map(col => col.name);
+            let csv = '\ufeff'; // UTF-8 BOM
+            csv += headers.map(h => `"${h.replace(/"/g, '""')}"`).join(',') + '\n';
+            
+            result.forEach(row => {
+                const values = headers.map(h => {
+                    const val = (row[h] || '').toString();
+                    return `"${val.replace(/"/g, '""')}"`;
+                });
+                csv += values.join(',') + '\n';
+            });
+            
+            // 下载
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `转换结果_${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast(`成功导出 ${result.length} 条记录`, 'success');
+        }
+
+        // ============== 规则自检 ==============
+        let currentCheckColumn = null;
+        let ruleCheckResults = {};
+
+        function checkRules() {
+            if (sourceData.length === 0) {
+                showToast('请先上传源数据文件', 'error');
+                return;
+            }
+            
+            if (targetColumns.length === 0) {
+                showToast('请先配置输出列', 'error');
+                return;
+            }
+
+            // 分析每列的映射情况
+            ruleCheckResults = {};
+            let totalUnmapped = 0;
+            let totalMapped = 0;
+
+            targetColumns.forEach(col => {
+                const colName = col.name;
+                const rule = mappingRules[colName];
+                
+                if (!rule || rule.type === 'fixed') {
+                    // 固定值规则，所有数据都算映射成功
+                    ruleCheckResults[colName] = { mapped: sourceData.length, unmapped: [], type: 'fixed' };
+                    totalMapped += sourceData.length;
+                    return;
+                }
+
+                const unmapped = [];
+                const mapped = [];
+
+                sourceData.forEach((row, rowIndex) => {
+                    const result = applyRuleForCheck(row, rule, rowIndex);
+                    if (result.isMapped) {
+                        mapped.push({ row, rowIndex, value: result.value });
+                    } else {
+                        unmapped.push({ row, rowIndex, sourceValue: result.sourceValue, reason: result.reason });
+                    }
+                });
+
+                ruleCheckResults[colName] = { 
+                    mapped: mapped.length, 
+                    unmapped: unmapped,
+                    type: rule.type
+                };
+                totalMapped += mapped.length;
+                totalUnmapped += unmapped.length;
+            });
+
+            // 显示弹窗
+            showRuleCheckModal(totalMapped, totalUnmapped);
+        }
+
+        function applyRuleForCheck(row, rule, rowIndex) {
+            const sourceCol = rule.sourceColumn;
+            let sourceValue = sourceCol ? (row[sourceCol] || '') : '';
+
+            switch (rule.type) {
+                case 'direct':
+                    return { isMapped: !!sourceValue, value: sourceValue, sourceValue, reason: sourceValue ? null : '源值为空' };
+                
+                case 'date':
+                    if (!sourceValue) return { isMapped: false, sourceValue, reason: '日期为空' };
+                    return { isMapped: true, value: sourceValue, sourceValue };
+                
+                case 'amount':
+                    if (!sourceValue) return { isMapped: false, sourceValue, reason: '金额为空' };
+                    return { isMapped: true, value: sourceValue, sourceValue };
+                
+                case 'valueMap':
+                    const mappings = rule.mappings || {};
+                    if (mappings[sourceValue]) {
+                        return { isMapped: true, value: mappings[sourceValue], sourceValue };
+                    }
+                    return { isMapped: false, sourceValue, reason: '无匹配映射' };
+                
+                case 'fuzzyMap':
+                    const fuzzyMappings = rule.fuzzyMappings || [];
+                    for (const fm of fuzzyMappings) {
+                        if (fm.contains && sourceValue.includes(fm.contains)) {
+                            return { isMapped: true, value: fm.mapTo, sourceValue };
+                        }
+                    }
+                    return { isMapped: false, sourceValue, reason: '无匹配关键词' };
+                
+                case 'expression':
+                    // 表达式默认认为是成功的
+                    return { isMapped: true, value: '', sourceValue };
+                
+                case 'combinedCondition':
+                    const rules = rule.combinedConditions || [];
+                    for (const r of rules) {
+                        const conditions = r.conditions || [];
+                        if (conditions.length === 0) continue;
+                        
+                        const allMatch = conditions.every(cond => {
+                            const condSourceVal = cond.sourceColumn ? (row[cond.sourceColumn] || '') : '';
+                            switch (cond.type) {
+                                case 'timeRange':
+                                    const timeMatch = condSourceVal.match(/(\d{1,2}):(\d{2})/);
+                                    if (!timeMatch) return false;
+                                    const hour = parseInt(timeMatch[1]);
+                                    const minute = parseInt(timeMatch[2]);
+                                    const timeMinutes = hour * 60 + minute;
+                                    const [startH, startM] = (cond.startTime || '00:00').split(':').map(Number);
+                                    const [endH, endM] = (cond.endTime || '23:59').split(':').map(Number);
+                                    const startMinutes = startH * 60 + startM;
+                                    const endMinutes = endH * 60 + endM;
+                                    return timeMinutes >= startMinutes && timeMinutes <= endMinutes;
+                                case 'contains':
+                                    if (!cond.value) return false;
+                                    const keywords = cond.value.split(/[,，]/).map(k => k.trim()).filter(k => k);
+                                    return keywords.some(keyword => condSourceVal.includes(keyword));
+                                case 'containsAll':
+                                    if (!cond.value) return false;
+                                    const allKeywords = cond.value.split(/[,，]/).map(k => k.trim()).filter(k => k);
+                                    return allKeywords.every(keyword => condSourceVal.includes(keyword));
+                                case 'equals':
+                                    return condSourceVal === cond.value;
+                                case 'startsWith':
+                                    return cond.value && condSourceVal.startsWith(cond.value);
+                                case 'regex':
+                                    if (!cond.value) return false;
+                                    try {
+                                        return new RegExp(cond.value, 'i').test(condSourceVal);
+                                    } catch (e) { return false; }
+                                default:
+                                    return false;
+                            }
+                        });
+
+                        if (allMatch) {
+                            return { isMapped: true, value: r.targetValue, sourceValue };
+                        }
+                    }
+                    return { isMapped: false, sourceValue, reason: '无匹配规则' };
+                
+                default:
+                    return { isMapped: false, sourceValue, reason: '未知规则类型' };
+            }
+        }
+
+        function showRuleCheckModal(totalMapped, totalUnmapped) {
+            const modal = document.getElementById('ruleCheckModal');
+            const summary = document.getElementById('ruleCheckSummary');
+            const content = document.getElementById('ruleCheckContent');
+
+            const total = sourceData.length * targetColumns.length;
+            const mappedPercent = total > 0 ? ((totalMapped / total) * 100).toFixed(1) : 0;
+
+            // 统计概览
+            summary.innerHTML = `
+                <div class="rule-check-stat">
+                    <div class="stat-value">${sourceData.length}</div>
+                    <div class="stat-label">总记录数</div>
+                </div>
+                <div class="rule-check-stat">
+                    <div class="stat-value stat-success">${mappedPercent}%</div>
+                    <div class="stat-label">映射成功率</div>
+                </div>
+                <div class="rule-check-stat">
+                    <div class="stat-value ${totalUnmapped > 0 ? 'stat-warning' : 'stat-success'}">${totalUnmapped}</div>
+                    <div class="stat-label">未映射项</div>
+                </div>
+            `;
+
+            // 列标签
+            const columnsWithIssues = targetColumns.filter(col => 
+                ruleCheckResults[col.name]?.unmapped?.length > 0
+            );
+
+            if (columnsWithIssues.length === 0) {
+                content.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: var(--accent-green);">
+                        <div style="font-size: 3rem;">✓</div>
+                        <div style="font-size: 1.2rem; margin-top: 16px;">所有规则配置完整，没有未映射的数据！</div>
+                    </div>
+                `;
+            } else {
+                currentCheckColumn = columnsWithIssues[0].name;
+                content.innerHTML = renderRuleCheckContent(columnsWithIssues);
+            }
+
+            modal.classList.add('active');
+            
+            // Re-render modal for mobile overlay to recalculate
+            document.body.classList.add('modal-open'); 
+        }
+
+        function renderRuleCheckContent(columnsWithIssues) {
+            const tabs = columnsWithIssues.map(col => {
+                const result = ruleCheckResults[col.name];
+                const count = result?.unmapped?.length || 0;
+                const isActive = col.name === currentCheckColumn;
+                return `
+                    <div class="column-tab has-issues ${isActive ? 'active' : ''}" 
+                         onclick="switchCheckColumn('${escapeHtml(col.name)}')">
+                        ${escapeHtml(col.name)}
+                        <span class="tab-count">${count}</span>
+                    </div>
+                `;
+            }).join('');
+
+            const result = ruleCheckResults[currentCheckColumn];
+            const rule = mappingRules[currentCheckColumn];
+
+            // 按源值分组统计未映射项
+            const grouped = {};
+            (result?.unmapped || []).forEach(item => {
+                const key = item.sourceValue || '(空值)';
+                if (!grouped[key]) {
+                    grouped[key] = { count: 0, rows: [], sourceValue: item.sourceValue };
+                }
+                grouped[key].count++;
+                grouped[key].rows.push(item.rowIndex);
+            });
+
+            // 按出现次数排序
+            const sortedGroups = Object.entries(grouped)
+                .sort((a, b) => b[1].count - a[1].count);
+
+            const listHtml = sortedGroups.map(([key, data]) => {
+                const preview = data.rows.slice(0, 3).map(i => i + 1).join(', ');
+                const moreCount = data.rows.length > 3 ? `等${data.rows.length}条` : '';
+                
+                return `
+                    <div class="unmapped-item">
+                        <div class="unmapped-info">
+                            <div class="unmapped-value" title="${escapeHtml(key)}">${escapeHtml(key)}</div>
+                            <div class="unmapped-detail">行号: ${preview} ${moreCount}</div>
+                        </div>
+                        <span class="unmapped-count">${data.count}条</span>
+                        <div class="quick-add-form">
+                            <span>→</span>
+                            <input type="text" id="quickMap_${escapeHtml(data.sourceValue)}" 
+                                   placeholder="映射为..." 
+                                   onkeypress="if(event.key==='Enter')quickAddMapping('${escapeHtml(currentCheckColumn)}', '${escapeHtml(data.sourceValue)}', this.value)">
+                            <button class="btn btn-sm btn-primary" 
+                                    onclick="quickAddMapping('${escapeHtml(currentCheckColumn)}', '${escapeHtml(data.sourceValue)}', document.getElementById('quickMap_${escapeHtml(data.sourceValue)}').value)">
+                                添加
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            return `
+                <div class="column-tabs">${tabs}</div>
+                <div style="margin-bottom: 12px; color: var(--text-muted);">
+                    规则类型: <strong>${getRuleTypeName(rule?.type || 'none')}</strong>
+                    ${rule?.sourceColumn ? ` | 源列: <strong>${escapeHtml(rule.sourceColumn)}</strong>` : ''}
+                </div>
+                <div class="unmapped-list">${listHtml}</div>
+            `;
+        }
+
+        function switchCheckColumn(colName) {
+            currentCheckColumn = colName;
+            const columnsWithIssues = targetColumns.filter(col => 
+                ruleCheckResults[col.name]?.unmapped?.length > 0
+            );
+            document.getElementById('ruleCheckContent').innerHTML = renderRuleCheckContent(columnsWithIssues);
+        }
+
+        function quickAddMapping(colName, sourceValue, targetValue) {
+            if (!targetValue || !targetValue.trim()) {
+                showToast('请输入映射目标值', 'error');
+                return;
+            }
+
+            const rule = mappingRules[colName];
+            if (!rule) {
+                showToast('请先配置该列的映射规则', 'error');
+                return;
+            }
+
+            targetValue = targetValue.trim();
+
+            // 根据规则类型添加映射
+            switch (rule.type) {
+                case 'valueMap':
+                    if (!rule.mappings) rule.mappings = {};
+                    rule.mappings[sourceValue] = targetValue;
+                    showToast(`已添加映射: "${sourceValue}" → "${targetValue}"`, 'success');
+                    break;
+                
+                case 'fuzzyMap':
+                    if (!rule.fuzzyMappings) rule.fuzzyMappings = [];
+                    rule.fuzzyMappings.push({ contains: sourceValue, mapTo: targetValue });
+                    showToast(`已添加模糊映射: 包含"${sourceValue}" → "${targetValue}"`, 'success');
+                    break;
+                
+                case 'combinedCondition':
+                    if (!rule.combinedConditions) rule.combinedConditions = [];
+                    // 添加一个简单的包含条件规则
+                    rule.combinedConditions.push({
+                        conditions: [{
+                            type: 'contains',
+                            sourceColumn: rule.sourceColumn,
+                            value: sourceValue
+                        }],
+                        targetValue: targetValue
+                    });
+                    showToast(`已添加组合规则: 包含"${sourceValue}" → "${targetValue}"`, 'success');
+                    break;
+                
+                default:
+                    showToast('当前规则类型不支持快速添加映射', 'error');
+                    return;
+            }
+
+            // 重新检查并刷新显示
+            checkRules();
+            renderMappingList();
+        }
+
+        function closeRuleCheckModal() {
+            document.getElementById('ruleCheckModal').classList.remove('active');
+            document.body.classList.remove('modal-open');
+        }
+
+        // ============== 配置方案管理 ==============
+        let currentPresetId = ''; // 当前选中的配置方案 ID
+
+        // 初始化配置方案选择器
+        function initPresetSelector() {
+            const select = document.getElementById('presetSelect');
+            select.innerHTML = '<option value="">-- 选择配置方案 --</option>';
+            
+            Object.keys(presets).forEach(id => {
+                const preset = presets[id];
+                const option = document.createElement('option');
+                option.value = id;
+                option.textContent = preset.name || id;
+                select.appendChild(option);
+            });
+
+            // 如果有当前选中的方案，保持选中状态
+            if (currentPresetId && presets[currentPresetId]) {
+                select.value = currentPresetId;
+            }
+        }
+
+        // 配置选择变化时
+        function onPresetSelectChange() {
+            const presetId = document.getElementById('presetSelect').value;
+            currentPresetId = presetId;
+        }
+
+        // 应用选中的配置方案
+        function applySelectedPreset() {
+            const presetId = document.getElementById('presetSelect').value;
+            if (!presetId || !presets[presetId]) {
+                showToast('请先选择一个配置方案', 'error');
+                return;
+            }
+            
+            currentPresetId = presetId;
+            const preset = presets[presetId];
+            document.getElementById('skipRows').value = preset.skipRows || 0;
+            targetColumns = JSON.parse(JSON.stringify(preset.targetColumns || []));
+            mappingRules = JSON.parse(JSON.stringify(preset.mappingRules || {}));
+            
+            renderTargetColumns();
+            renderMappingList();
+            
+            if (rawFileContent) {
+                parseSourceData();
+            }
+            
+            showToast(`已应用配置：${preset.name}`, 'success');
+        }
+
+        // 将当前配置保存为新方案
+        function saveAsNewPreset() {
+            const name = prompt('请输入新配置方案的名称：', '我的配置');
+            if (!name || !name.trim()) return;
+            
+            // 生成唯一 ID
+            const id = 'custom-' + Date.now();
+            
+            presets[id] = {
+                name: name.trim(),
+                skipRows: parseInt(document.getElementById('skipRows').value) || 0,
+                targetColumns: JSON.parse(JSON.stringify(targetColumns)),
+                mappingRules: JSON.parse(JSON.stringify(mappingRules))
+            };
+            
+            currentPresetId = id;
+            initPresetSelector();
+            document.getElementById('presetSelect').value = id;
+            
+            showToast(`配置方案 "${name}" 已创建`, 'success');
+        }
+
+        // 重命名当前方案
+        function renamePreset() {
+            if (!currentPresetId || !presets[currentPresetId]) {
+                showToast('请先选择一个配置方案', 'error');
+                return;
+            }
+            
+            const oldName = presets[currentPresetId].name;
+            const newName = prompt('请输入新名称：', oldName);
+            if (!newName || !newName.trim() || newName === oldName) return;
+            
+            presets[currentPresetId].name = newName.trim();
+            initPresetSelector();
+            
+            showToast(`已重命名为 "${newName}"`, 'success');
+        }
+
+        // 删除当前方案
+        function deletePreset() {
+            if (!currentPresetId || !presets[currentPresetId]) {
+                showToast('请先选择一个配置方案', 'error');
+                return;
+            }
+            
+            const name = presets[currentPresetId].name;
+            if (!confirm(`确定要删除配置方案 "${name}" 吗？\n\n删除后需要"保存到HTML"才能永久生效。`)) {
+                return;
+            }
+            
+            delete presets[currentPresetId];
+            currentPresetId = '';
+            initPresetSelector();
+            
+            showToast(`配置方案 "${name}" 已删除`, 'success');
+        }
+
+        // 导出当前配置为 JSON
+        function exportConfig() {
+            if (targetColumns.length === 0) {
+                showToast('请先配置目标列', 'error');
+                return;
+            }
+
+            const config = {
+                name: currentPresetId && presets[currentPresetId] ? presets[currentPresetId].name : '导出的配置',
+                skipRows: parseInt(document.getElementById('skipRows').value),
+                targetColumns: targetColumns,
+                mappingRules: mappingRules,
+                exportedAt: new Date().toISOString()
+            };
+            
+            const json = JSON.stringify(config, null, 2);
+            const blob = new Blob([json], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `账单转换配置_${new Date().toISOString().slice(0, 10)}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast('配置已导出为 JSON 文件', 'success');
+        }
+
+        // 将所有配置方案保存到 HTML 文件
+        function saveRulesToHtml() {
+            try {
+                if (Object.keys(presets).length === 0) {
+                    showToast('没有配置方案可保存', 'error');
+                    return;
+                }
+
+                // 如果当前有编辑中的配置，询问是否更新到当前方案
+                if (currentPresetId && presets[currentPresetId] && targetColumns.length > 0) {
+                    if (confirm('是否将当前编辑的配置更新到选中的方案？\n\n点击"确定"更新，点击"取消"仅保存已有方案。')) {
+                        presets[currentPresetId] = {
+                            ...presets[currentPresetId],
+                            skipRows: parseInt(document.getElementById('skipRows').value) || 0,
+                            targetColumns: JSON.parse(JSON.stringify(targetColumns)),
+                            mappingRules: JSON.parse(JSON.stringify(mappingRules))
+                        };
+                    }
+                }
+
+                // 更新 DOM 中的配置标签
+                const presetScript = document.getElementById('preset-config');
+                if (!presetScript) {
+                    showToast('无法找到配置存储位置', 'error');
+                    return;
+                }
+
+                // 保存原始配置用于恢复
+                const originalContent = presetScript.textContent;
+                
+                // 更新配置内容（保存所有方案）
+                presetScript.textContent = '\n' + JSON.stringify(presets, null, 4) + '\n    ';
+
+                // 获取完整的 HTML（包括 DOCTYPE）
+                const doctype = '<!DOCTYPE html>\n';
+                const htmlContent = doctype + document.documentElement.outerHTML;
+
+                // 恢复原始配置（避免影响当前页面状态）
+                presetScript.textContent = originalContent;
+
+                // 下载新的 HTML 文件
+                const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                const timestamp = new Date().toISOString().slice(0, 10);
+                a.download = `excel-converter-${timestamp}.html`;
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                
+                setTimeout(() => {
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 100);
+
+                const count = Object.keys(presets).length;
+                showToast(`已保存 ${count} 个配置方案到 HTML 文件`, 'success');
+            } catch (error) {
+                console.error('保存失败:', error);
+                showToast('保存失败: ' + error.message, 'error');
+            }
+        }
+
+        // 生成预设配置的 JavaScript 代码
+        function generatePresetsCode(preset) {
+            const indent = '            ';
+            const indent2 = '                ';
+            const indent3 = '                    ';
+            const indent4 = '                        ';
+
+            let code = 'const presets = {\n';
+            code += `${indent}'meituan-pixiu': {\n`;
+            code += `${indent2}name: '${preset.name}',\n`;
+            code += `${indent2}skipRows: ${preset.skipRows},\n`;
+
+            // targetColumns
+            code += `${indent2}targetColumns: [\n`;
+            preset.targetColumns.forEach((col, i) => {
+                const comma = i < preset.targetColumns.length - 1 ? ',' : '';
+                code += `${indent3}{ name: '${escapeJsString(col.name)}', defaultValue: '${escapeJsString(col.defaultValue || '')}' }${comma}\n`;
+            });
+            code += `${indent2}],\n`;
+
+            // mappingRules
+            code += `${indent2}mappingRules: {\n`;
+            const ruleKeys = Object.keys(preset.mappingRules);
+            ruleKeys.forEach((key, keyIndex) => {
+                const rule = preset.mappingRules[key];
+                const isLastKey = keyIndex === ruleKeys.length - 1;
+                code += generateRuleCode(key, rule, indent3, indent4, isLastKey);
+            });
+            code += `${indent2}}\n`;
+
+            code += `${indent}}\n`;
+            code += '        };';
+
+            return code;
+        }
+
+        // 生成单个规则的代码
+        function generateRuleCode(key, rule, indent, indent2, isLast) {
+            let code = `${indent}'${escapeJsString(key)}': {\n`;
+            code += `${indent2}type: '${rule.type}'`;
+
+            switch (rule.type) {
+                case 'direct':
+                    code += `,\n${indent2}sourceColumn: '${escapeJsString(rule.sourceColumn || '')}'`;
+                    break;
+
+                case 'date':
+                    code += `,\n${indent2}sourceColumn: '${escapeJsString(rule.sourceColumn || '')}'`;
+                    code += `,\n${indent2}dateFormat: '${escapeJsString(rule.dateFormat || 'YYYY-MM-DD')}'`;
+                    break;
+
+                case 'amount':
+                    code += `,\n${indent2}sourceColumn: '${escapeJsString(rule.sourceColumn || '')}'`;
+                    break;
+
+                case 'fixed':
+                    code += `,\n${indent2}fixedValue: '${escapeJsString(rule.fixedValue || '')}'`;
+                    break;
+
+                case 'valueMap':
+                    code += `,\n${indent2}sourceColumn: '${escapeJsString(rule.sourceColumn || '')}'`;
+                    code += `,\n${indent2}mappings: ${JSON.stringify(rule.mappings || {}, null, 0).replace(/"/g, "'")}`;
+                    break;
+
+                case 'fuzzyMap':
+                    code += `,\n${indent2}sourceColumn: '${escapeJsString(rule.sourceColumn || '')}'`;
+                    code += `,\n${indent2}fuzzyMappings: [\n`;
+                    (rule.fuzzyMappings || []).forEach((fm, i) => {
+                        const comma = i < rule.fuzzyMappings.length - 1 ? ',' : '';
+                        code += `${indent2}    { contains: '${escapeJsString(fm.contains || '')}', mapTo: '${escapeJsString(fm.mapTo || '')}' }${comma}\n`;
+                    });
+                    code += `${indent2}]`;
+                    break;
+
+                case 'expression':
+                    code += `,\n${indent2}expression: '${escapeJsString(rule.expression || '')}'`;
+                    break;
+
+                case 'combinedCondition':
+                    code += `,\n${indent2}sourceColumn: '${escapeJsString(rule.sourceColumn || '')}'`;
+                    code += `,\n${indent2}combinedConditions: [\n`;
+                    (rule.combinedConditions || []).forEach((cc, i) => {
+                        const comma = i < rule.combinedConditions.length - 1 ? ',' : '';
+                        code += `${indent2}    { conditions: ${generateConditionsCode(cc.conditions)}, targetValue: '${escapeJsString(cc.targetValue || '')}' }${comma}\n`;
+                    });
+                    code += `${indent2}]`;
+                    break;
+            }
+
+            code += `\n${indent}}${isLast ? '' : ','}\n`;
+            return code;
+        }
+
+        // 生成条件数组代码
+        function generateConditionsCode(conditions) {
+            if (!conditions || conditions.length === 0) return '[]';
+            
+            const parts = conditions.map(cond => {
+                let condCode = `{ type: '${cond.type}'`;
+                if (cond.sourceColumn) {
+                    condCode += `, sourceColumn: '${escapeJsString(cond.sourceColumn)}'`;
+                }
+                if (cond.type === 'timeRange') {
+                    condCode += `, startTime: '${cond.startTime || '00:00'}', endTime: '${cond.endTime || '23:59'}'`;
+                } else if (cond.value !== undefined) {
+                    condCode += `, value: '${escapeJsString(cond.value)}'`;
+                }
+                condCode += ' }';
+                return condCode;
+            });
+            
+            return '[' + parts.join(', ') + ']';
+        }
+
+        // 转义 JavaScript 字符串中的特殊字符
+        function escapeJsString(str) {
+            if (typeof str !== 'string') return '';
+            return str
+                .replace(/\\/g, '\\\\')
+                .replace(/'/g, "\\'")
+                .replace(/\n/g, '\\n')
+                .replace(/\r/g, '\\r');
+        }
+
+        function importConfig() {
+            document.getElementById('configImportInput').click();
+        }
+
+        document.getElementById('configImportInput').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                try {
+                    const config = JSON.parse(event.target.result);
+                    
+                    if (!config.targetColumns || !config.mappingRules) {
+                        throw new Error('配置文件格式无效');
+                    }
+                    
+                    // 询问是直接应用还是保存为新方案
+                    const action = confirm('如何处理导入的配置？\n\n点击"确定"：保存为新的配置方案\n点击"取消"：仅临时应用（不保存）');
+                    
+                    if (action) {
+                        // 保存为新方案
+                        const name = config.name || '导入的配置';
+                        const id = 'imported-' + Date.now();
+                        presets[id] = {
+                            name: name,
+                            skipRows: config.skipRows || 0,
+                            targetColumns: config.targetColumns,
+                            mappingRules: config.mappingRules
+                        };
+                        currentPresetId = id;
+                        initPresetSelector();
+                        document.getElementById('presetSelect').value = id;
+                        showToast(`已导入并保存为配置方案 "${name}"`, 'success');
+                    }
+                    
+                    // 应用配置
+                    document.getElementById('skipRows').value = config.skipRows || 0;
+                    targetColumns = config.targetColumns;
+                    mappingRules = config.mappingRules;
+                    
+                    renderTargetColumns();
+                    renderMappingList();
+                    
+                    if (rawFileContent) {
+                        parseSourceData();
+                    }
+                    
+                    if (!action) {
+                        showToast('配置已临时应用', 'success');
+                    }
+                } catch (err) {
+                    showToast('配置文件格式错误：' + err.message, 'error');
+                }
+            };
+            reader.readAsText(file);
+            e.target.value = '';
+        });
+
+        // ============== 工具函数 ==============
+        function escapeHtml(str) {
+            if (str === null || str === undefined) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(100px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // ============== 初始化 ==============
+        function init() {
+            initPresetSelector();
+            renderTargetColumns();
+            renderMappingList();
+        }
+
+        init();
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body></html>
+    </div>
+    
+    <!-- App 推广浮窗 -->
+<style>
+  #app-promo {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: #fff;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    font-family: sans-serif;
+    z-index: 9999;
+    box-sizing: border-box;
+  }
+  #app-promo img {
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  #app-promo-content {
+    flex: 1;
+    margin-left: 12px;
+    padding-right: 8px;
+  }
+  #app-promo-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #333;
+  }
+  #app-promo-desc {
+    font-size: 14px;
+    color: #666;
+  }
+  #app-promo-close {
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-left: 12px;
+    margin-right: 4px;
+    transition: background 0.2s;
+  }
+  #app-promo-close:active {
+    background: rgba(0,0,0,0.1);
+    border-radius: 50%;
+  }
+
+  @media (max-width: 480px) {
+    #app-promo {
+      height: 80px;
+      padding: 8px 12px;
+    }
+    #app-promo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+    }
+    #app-promo-title {
+      font-size: 15px;
+    }
+    #app-promo-desc {
+      font-size: 13px;
+    }
+    #app-promo-close {
+      font-size: 22px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+</style>
+
+<!-- App 推广浮窗 -->
+<div id="app-promo">
+  <img src="http://pplane.anzhai.space/web_pan_icon.png" alt="App Icon">
+  <div id="app-promo-content">
+    <div id="app-promo-title">WebPan</div>
+    <div id="app-promo-desc">一款HTML代码编辑与预览工具</div>
+  </div>
+  <div id="app-promo-close">&times;</div>
+</div>
+
+<script>
+  // 点击关闭按钮
+  document.getElementById('app-promo-close').addEventListener('click', function(e) {
+    e.stopPropagation();  // 阻止事件冒泡
+    document.getElementById('app-promo').style.display = 'none';
+  });
+
+  // 点击浮窗跳转 App Store
+  document.getElementById('app-promo').addEventListener('click', function(e) {
+    if (e.target.id !== 'app-promo-close') {
+      window.open('https://apps.apple.com/app/id6749603694', '_blank');
+    }
+  });
+</script>
+
+
+</body>
+</html>
